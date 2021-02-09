@@ -1,0 +1,158 @@
+.card-details-wrapper {
+    padding: 25px;
+    border-radius: 2px;
+     margin: 15px 0 50px 0; 
+    background-color: white;
+}
+.card-details-wrapper
+{
+    margin-bottom: 50px;
+}
+
+.terms 
+{
+    padding-top: 30px;
+    margin-bottom: 10px;
+}
+.terms h3
+{
+    font-size: 24px;
+}
+.terms h4
+{
+    font-size: 20px;
+}
+
+
+
+/* -----------------------------------------------------------------------------------
+
+                                       PRELOADER
+
+----------------------------------------------------------------------------------- */
+
+#page-preloader {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 100500;
+  }
+  /* -----------------------------------------------------------------------------------
+  
+                                         /// PRELOADER
+                                         
+  ----------------------------------------------------------------------------------- */
+  /* -----------------------------------------------------------------------------------
+  
+                                          SPINNER
+                                         
+  ----------------------------------------------------------------------------------- */
+  [id*="spinner-"] {
+    width: 6em;
+    height: 6em;
+    margin: 20px auto;
+  }
+  /*
+   * Spinner three
+   */
+  
+  #spinner-three {
+    width: 6em;
+    height: 6em;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin: -3em 0 0 -3em;
+  }
+  #spinner-three #inner,
+  #spinner-three #outer {
+    display: inline-block;
+    position: absolute;
+    border: 5px solid transparent;
+  }
+  #spinner-three #inner {
+    width: 3em;
+    height: 3em;
+    border-radius: 3em;
+    margin: 1.5em 0 0 1.5em;
+    border-color: #82004a #82004a transparent transparent;
+    -webkit-animation: spinnertwo 1000ms linear infinite;
+    -moz-animation: spinnertwo 1000ms linear infinite;
+    -ms-animation: spinnertwo 1000ms linear infinite;
+    -o-animation: spinnertwo 1000ms linear infinite;
+    animation: spinnertwo 1000ms linear infinite;
+  }
+  #spinner-three #outer {
+    width: 6em;
+    height: 6em;
+    border-radius: 6em;
+    border-color: transparent transparent #82004a #82004a;
+    -webkit-animation: spinnerone 1000ms linear infinite;
+    -moz-animation: spinnerone 1000ms linear infinite;
+    -ms-animation: spinnerone 1000ms linear infinite;
+    -o-animation: spinnerone 1000ms linear infinite;
+    animation: spinnerone 1000ms linear infinite;
+  }
+  /*
+   * Animations
+   */
+  
+  /*
+   * Spinnerone animation
+   */
+  
+  @-webkit-keyframes spinnerone {
+    0% {
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(-360deg);
+      transform: rotate(-360deg);
+    }
+  }
+  @keyframes spinnerone {
+    0% {
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(-360deg);
+      transform: rotate(-360deg);
+    }
+  }
+  /*
+   * Spinnertwo animation
+   */
+  
+  @-webkit-keyframes spinnertwo {
+    0% {
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes spinnertwo {
+    0% {
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+  }
+  /* -----------------------------------------------------------------------------------
+  
+                                         /// SPINNER
+                                         
+  ----------------------------------------------------------------------------------- */
+  
+
+
+

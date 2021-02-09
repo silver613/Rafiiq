@@ -1,0 +1,10 @@
+.form-group {
+  position: relative;
+}
+
+.input-group-append {
+  position: absolute;
+  right: 0;
+  top: 25px;
+  height: 40px;
+}

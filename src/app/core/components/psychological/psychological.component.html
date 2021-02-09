@@ -1,0 +1,440 @@
+<main class="margin_60_35">
+  <div class="container margin_120_95">
+    <div class="main_title">
+      <h2>{{ "Tests" | translate }}</h2>
+      <p>
+        {{
+          "Rafiq offers online assessments which can assess your psychological status and detect any mental problems"
+            | translate
+        }}
+      </p>
+    </div>
+    <div class="row">
+      <div class="col-md-6" *ngFor="let s of Psychological">
+        <a (click)="takeId(s.id)" style="cursor: pointer">
+          <div class="specialty card-box-shadow" (click)="parentModal.show()">
+            <div class="specialty-image">
+              <img src="{{ imageURL }}/uploads/tests/{{ s.image }}" />
+              <div class="specialty-name text-center">
+                <h3>{{ s.name }}</h3>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- /box_list -->
+</main>
+
+<div
+  class="modal fade"
+  bsModal
+  #parentModal="bs-modal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="dialog-nested-name1"
+>
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content" *ngIf="loginbuy == 1">
+      <div class="modal-header">
+        <h4
+          id="dialog-nested-name1"
+          class="modal-title pull-left"
+          style="color: #82004a"
+        >
+          {{ "Choose who is doing the test" | translate }}
+        </h4>
+        <button
+          type="button"
+          class="close pull-right"
+          aria-label="Close"
+          (click)="parentModal.hide()"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <button
+          type="button"
+          class="btn btn-test"
+          style="width: 100%; margin-bottom: 10px"
+          (click)="checktest(testtype)"
+        >
+          {{ "Personal" | translate }}
+        </button>
+        <button
+          type="button"
+          class="btn btn-test"
+          (click)="childModal.show()"
+          style="width: 100%"
+          *ngIf="state != 'student'"
+        >
+          {{ "another person" | translate }}
+        </button>
+      </div>
+    </div>
+
+    <div class="modal-content" *ngIf="loginbuy == 0">
+      <div class="modal-header">
+        <h4
+          id="dialog-nested-name1"
+          class="modal-title pull-left"
+          style="color: #82004a"
+        >
+          {{ "you must buy this test" | translate }}
+        </h4>
+        <button
+          type="button"
+          class="close pull-right"
+          aria-label="Close"
+          (click)="parentModal.hide()"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form #form="ngForm" (ngSubmit)="submitForm()">
+          <div class="form-group buytest">
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="payway"
+                value="1"
+                (change)="onpayway($event)"
+              />
+              <label class="form-check-label" for="inlineRadio1">{{
+                "My wallet" | translate
+              }}</label>
+            </div>
+            <div class="form-check form-check-inline ml-4">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="payway"
+                value="2"
+                (change)="onpayway($event)"
+                disabled
+              />
+              <label class="form-check-label" for="inlineRadio2">{{
+                "Master Card" | translate
+              }}</label>
+            </div>
+
+            <div class="form-check form-check-inline ml-4">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="payway"
+                value="3"
+                (click)="openModal2(template)"
+                (change)="onpayway($event)"
+              />
+              <label class="form-check-label" for="inlineRadio2">{{
+                "Vodafone Cash" | translate
+              }}</label>
+            </div>
+          </div>
+          <button type="submit" class="btn_1 full-width">
+            {{ "buy" | translate }}
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div class="modal-content" *ngIf="loginbuy == 2">
+      <div class="modal-header">
+        <h4
+          id="dialog-nested-name1"
+          class="modal-title pull-left"
+          style="color: #82004a"
+        >
+          {{ "you must be login" | translate }}
+        </h4>
+        <button
+          type="button"
+          class="close pull-right"
+          aria-label="Close"
+          (click)="parentModal.hide()"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <button
+          type="button"
+          class="btn btn-test"
+          style="width: 100%; margin-bottom: 10px"
+          [routerLink]="'/Login'"
+        >
+          {{ "login" | translate }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  class="modal fade"
+  bsModal
+  #childModal="bs-modal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="dialog-nested-name2"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button
+          type="button"
+          class="close pull-right"
+          aria-label="Close"
+          (click)="childModal.hide()"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <button
+          type="button"
+          class="btn btn-test"
+          style="width: 100%; margin-bottom: 10px"
+          (click)="smModal.show()"
+          *ngIf="state != 'trainer'"
+        >
+          {{ "Guardian" | translate }}
+        </button>
+        <button
+          type="button"
+          class="btn btn-test"
+          (click)="thirdModal.show()"
+          style="width: 100%"
+          *ngIf="state != 'wly_Amr'"
+        >
+          {{ "specialist" | translate }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  class="modal fade"
+  bsModal
+  #thirdModal="bs-modal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="dialog-nested-name3"
+>
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button
+          type="button"
+          class="close pull-right"
+          aria-label="Close"
+          (click)="thirdModal.hide()"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <button
+          type="button"
+          class="btn btn-test"
+          style="width: 100%; margin-bottom: 10px"
+          [routerLink]="'/code'"
+          (click)="checktest2(testtype)"
+        >
+          {{ "Actual customer" | translate }}
+        </button>
+        <button
+          type="button"
+          class="btn btn-test"
+          style="width: 100%; margin-bottom: 10px"
+          [routerLink]="'/CreateClient'"
+          (click)="checktest2(testtype)"
+        >
+          {{ "Open the customer" | translate }}
+        </button>
+        <button
+          type="button"
+          class="btn btn-test"
+          style="width: 100%; margin-bottom: 10px"
+          [routerLink]="'/importinfo'"
+          (click)="checktest2(testtype)"
+        >
+          {{ "Fill out the necessary information" | translate }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  bsModal
+  #smModal="bs-modal"
+  class="modal fade"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="dialog-sizes-name2"
+>
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button
+          type="button"
+          class="close pull-right"
+          aria-label="Close"
+          (click)="smModal.hide()"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <button
+          type="button"
+          class="btn btn-test"
+          style="width: 100%; margin-bottom: 10px"
+          [routerLink]="'/profile'"
+          (click)="checktest2(testtype)"
+        >
+          {{ "Son" | translate }}
+        </button>
+        <button
+          type="button"
+          class="btn btn-test"
+          style="width: 100%; margin-bottom: 10px"
+          [routerLink]="'/profile'"
+          (click)="checktest2(testtype)"
+        >
+          {{ "Add a son" | translate }}
+        </button>
+        <button
+          type="button"
+          class="btn btn-test"
+          style="width: 100%; margin-bottom: 10px"
+          [routerLink]="'/importinfo'"
+          (click)="checktest2(testtype)"
+        >
+          {{ "Fill out the necessary information" | translate }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">
+          {{ "Enter the Code" | translate }}
+        </h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <!-----(ngSubmit)="submitForm2(name)"-->
+      <div class="modal-body">
+        <form #form="ngForm">
+          <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <div class="form-group">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="{{ 'Code' | translate }} "
+                    name="name"
+                    #name
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">
+              {{ "Save" | translate }}
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">{{ "steps" | translate }}</h4>
+    <button
+      type="button"
+      class="close pull-right"
+      aria-label="Close"
+      (click)="modalRef.hide()"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body vodcash">
+    <p>
+      <b>
+        {{
+          "You have chosen Vodafone Cash to pay the session price, and your request is currently on hold. Please follow the following steps to confirm payment and reservation:"
+            | translate
+        }}</b
+      >
+    </p>
+    <ul class="vodafone">
+      <li>
+        {{
+          "Transfer the session value shown in front of you in the form to the following number 010 ****."
+            | translate
+        }}
+      </li>
+      <li>
+        {{
+          "Photocopy the payment receipt or transfer letter from the phone and send it to the chat customer service"
+            | translate
+        }}
+      </li>
+      <li>
+        {{
+          "Send the name of the trainer and the date of the session with a copy of the receipt or message"
+            | translate
+        }}
+      </li>
+      <li>
+        {{
+          "Wait for customer service response to confirm your reservation"
+            | translate
+        }}
+      </li>
+    </ul>
+  </div>
+</ng-template>
+
+<!-- !Preloader -->
+<div id="page-preloader" *ngIf="showSpinner">
+  <div id="spinner-three">
+    <div id="inner"></div>
+    <div id="outer"></div>
+  </div>
+</div>
+<!-- /// !Preloader -->

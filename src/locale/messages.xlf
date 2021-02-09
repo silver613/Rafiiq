@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="DoctorHeader" datatype="html">
+        <source>Find a Doctor!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/index/index.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+        <note priority="1" from="description">Doctor Header</note>
+      </trans-unit>
+      <trans-unit id="constructionDescription" datatype="html">
+        <source>
+					Ridiculus sociosqu cursus neque cursus curae ante scelerisque vehicula.
+				</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/index/index.component.html</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+        <note priority="1" from="description">Doctor Descritpion</note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

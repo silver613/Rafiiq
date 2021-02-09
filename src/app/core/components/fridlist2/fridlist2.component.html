@@ -1,0 +1,65 @@
+<main class="margin_60_35">
+  <!-- /results -->
+
+  <div class="container margin_60_35">
+    <div class="row">
+      <div class="col-lg-12">
+        <div *ngIf="specialists == null">
+          <h3 class="text-center">{{ "No Trainers" | translate }}</h3>
+        </div>
+        <div class="row">
+          <div class="col-md-4" *ngFor="let s of specialists">
+            <div class="box_list wow fadeIn">
+              <!-- <a href="" class="wish_bt"></a> -->
+              <figure *ngIf="s.image != null">
+                <a [routerLink]="['/DetailPage2', s.id]" class="imgDoc"
+                  ><img
+                    src="{{ imageURL }}/uploads/users/{{ s.image }}"
+                    class="img-fluid"
+                    alt=""
+                  />
+                  <div class="preview">
+                    <span>{{ "Read more" | translate }}</span>
+                  </div>
+                </a>
+              </figure>
+              <figure *ngIf="s.image == null">
+                <a [routerLink]="['/DetailPage2', s.id]" class="imgDoc"
+                  ><img
+                    src="./assets/img/default.png"
+                    class="img-fluid"
+                    alt=""
+                  />
+                  <div class="preview">
+                    <span>{{ "Read more" | translate }}</span>
+                  </div>
+                </a>
+              </figure>
+              <div class="wrapper">
+                <h3>
+                  {{ s.appreviation }} {{ s.first_name }} {{ s.last_name }}
+                </h3>
+
+                <p>{{ s.surname }}</p>
+                <div style="font-size: large; color: #ffc107">
+                  <rating [(ngModel)]="s.rate" class="rating"></rating
+                  ><small *ngIf="s.rate != null">({{ s.rate }})</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+<!-- /main -->
+
+<!-- !Preloader -->
+<div id="page-preloader" *ngIf="showSpinner">
+  <div id="spinner-three">
+    <div id="inner"></div>
+    <div id="outer"></div>
+  </div>
+</div>
+<!-- /// !Preloader -->

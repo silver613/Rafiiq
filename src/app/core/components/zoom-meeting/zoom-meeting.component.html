@@ -1,0 +1,46 @@
+<!-- <nav
+  class="navbar navbar-light"
+  style="background-color: #fdaf43; height: 80px !important"
+>
+  <a class="navbar-brand" href="#" style="color: #82004a">
+    <img
+      src="./assets/images/logo.png"
+      data-retina="true"
+      alt=""
+      width="50"
+      height="50"
+    />
+    <b style="margin-left: 10px; font-size: 20px">RAFiiQ</b></a
+  >
+</nav> -->
+<main [hidden]="isHidden">
+  <h1>RafiiQ Zoom Meeting</h1>
+  <h3 *ngIf="!(ZoomDetails$ | async)">No Meeting Reservation For You</h3>
+  <div *ngIf="(ZoomDetails$ | async) && ZoomDetails$ | async as ZoomDetails">
+    <button (click)="getSignature()">Join Meeting</button>
+    <br />
+    <br />
+
+    <br />
+    <br />
+    <div class="container">
+      <table
+        class="table table-dark"
+        *ngIf="(ZoomDetails$ | async) && ZoomDetails$ | async as ZoomDetails"
+      >
+        <thead>
+          <tr>
+            <th scope="col">Password</th>
+            <th scope="col">Type</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{ ZoomDetails.password }}</td>
+            <td>{{ ZoomDetails.type }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</main>

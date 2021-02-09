@@ -1,0 +1,136 @@
+<main class="margin_60_35">
+
+    <div id="hero_register">
+        <div class="container margin_120_95">			
+                 
+               
+                    <h4 class="text-center" style="color: white;"> {{'Fill out the necessary information'|translate}} </h4>
+                    <div class="row justify-content-center">
+                        <div class="col-md-5">
+                    <div class="box_form">
+                        <form #form="ngForm"  (ngSubmit)="submitForm(name,birth_date,examiner_name,app_date,nationality,language,main_hand,gender,school)">
+                            <div class="row">
+                                <div class="col-md-6 ">
+                                    <div class="form-group">
+                                        <label>{{'Name'|translate}}</label>
+                                        <input name="name" #name type="text" class="form-control" >
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>{{'Birth date'|translate}}</label>
+                                        <input name="birth_date" #birth_date type="date" class="form-control" >
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /row -->
+                          
+                            <div class="row">
+                               
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>{{'Application Date'|translate}}</label>
+                                        <input #app_date name="app_date" type="date" class="form-control" >
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>{{'Nationality'|translate}} </label>
+                                        <input name="nationality" #nationality type="text" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <label>{{'Examiner Name'|translate}}</label>
+                                        <input name="examiner_name" #examiner_name type="text" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /row -->
+                            <div class="row">
+                               
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>{{'Language'|translate}}</label>
+                                        <select name="language" #language  class="form-control">
+                                            <option value="1">{{'العربية'|translate}}</option>
+                                            <option value="2">{{'الانجليزية'|translate}}</option>
+
+            
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>{{'Main Hand'|translate}}</label>
+                                        <input name="main_hand" #main_hand type="text" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /row -->
+
+                           
+        
+                           
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <label >{{'School'|translate}}</label>
+                                        <select name="school" #school  class="form-control" >
+                                            <option value="{{s.id}}" *ngFor="let s of allinstitutions">{{s.first_name}}</option>
+                                         
+            
+                                        </select>
+                                        </div>
+                                </div>
+                               
+                            </div>
+                            <div class="row">
+
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <label >
+                                            {{'Gender'|translate}}                                                                    </label>
+                                        <div class="form-group">
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio"  name="gender"  value="ذكر"  (change)="ongender($event)" >
+                                                <label class="form-check-label" for="inlineRadio1">{{'Male'|translate}}</label>
+                                              </div>
+                                              <div class="form-check form-check-inline ml-4">
+                                                <input class="form-check-input" type="radio" name="gender"  value="انثي"  (change)="ongender($event)" >
+                                                <label class="form-check-label" for="inlineRadio2">{{'Female'|translate}}</label>
+                                              </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                                <p class="text-center add_top_30"><input type="submit" class="btn_1" value="{{'Submit'|translate}}"></p>
+                            <!-- /row -->
+                        </form>
+                    </div>
+                    <!-- /box_form -->
+                </div>
+                
+                <!-- /col -->
+            </div>
+            <!-- /row -->
+        </div>
+        <!-- /container -->
+    </div>
+    <!-- /hero_register -->
+</main>
+<!-- /main -->
+
+<div id="page-preloader" *ngIf="showSpinner">
+
+    <div id="spinner-three">
+      <div id="inner"></div>
+      <div id="outer"></div>
+    </div>
+  
+  </div>

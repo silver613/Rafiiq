@@ -1,0 +1,98 @@
+/*problems*/
+
+.card-box-shadow {
+  box-shadow: 3px 5px 16.2px 1.8px rgba(0, 0, 0, 0.11);
+}
+.specialty {
+  margin-bottom: 20px;
+}
+.specialty-image img {
+  width: 100%;
+  max-height: 280px;
+  height: 280px;
+  border-radius: 4px;
+  position: relative;
+}
+.specialty-name {
+  width: 95%;
+  height: 280px;
+  position: absolute;
+  top: 0px;
+  border-radius: 4px;
+
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.specialty-name h3 {
+  margin-top: 120px;
+  color: white;
+}
+@media (max-width: 1164px) and (min-width: 990px) {
+  .specialty-name {
+    width: 93%;
+    height: 280px;
+    position: absolute;
+    top: 0px;
+    border-radius: 4px;
+
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+}
+
+@media (max-width: 989px) and (min-width: 770px) {
+  .specialty-name {
+    width: 90%;
+    height: 280px;
+    position: absolute;
+    top: 0px;
+    border-radius: 4px;
+
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+}
+
+@media (max-width: 766px) and (min-width: 480px) {
+  .specialty-name {
+    width: 94%;
+    height: 280px;
+    position: absolute;
+    top: 0px;
+    border-radius: 4px;
+
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+}
+
+@media (max-width: 479px) and (min-width: 395px) {
+  .specialty-name {
+    width: 93%;
+    height: 280px;
+    position: absolute;
+    top: 0px;
+    border-radius: 4px;
+
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+}
+
+@media (max-width: 394px) and (min-width: 1px) {
+  .specialty-name {
+    width: 92%;
+    height: 280px;
+    position: absolute;
+    top: 0px;
+    border-radius: 4px;
+
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+}
+
+/*end-of-problems*/
+.btn-test {
+  background-color: #82004a;
+  color: white;
+}
+
+.vodafone {
+  list-style: circle;
+  padding: 10px;
+}

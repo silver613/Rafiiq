@@ -1,0 +1,414 @@
+
+    <main class="margin_60_35">
+
+    <div class="container margin_120_95">
+        <div class="main_title">
+            <h2>{{'LEARNING AND TAECHING'|translate}}
+            </h2>
+            
+        </div>
+        <div  class="qu-box">
+            <div  class="qu-body">
+                <div class="row" >
+                    <div class="col-md-12" id="pnlResult">
+                        <h2>{{'YOUR RESULT!'|translate}}</h2>
+                    </div>
+                    <div>
+                        <tabset>
+                          <tab heading="{{'Personal information'|translate}}" id="tab1">
+                              
+                            <div class="card" style="margin-top: 30px;" *ngFor="let s of userdata">
+                                <div class="card-body">
+                                  <div class="row" >
+                                      <div class="col-md-6">
+                                         <span style="color: #82004a;">{{'Name'|translate}}:</span> {{s.name}}
+                                      </div>
+                                      <div class="col-md-6">
+                                        <span style="color: #82004a;">   {{'Birth date'|translate}}:</span>{{s.birth_date}}
+                                    </div>
+                                    <div class="col-md-12" *ngIf="s.examiner_name!=null">
+                                      <span style="color: #82004a;">   {{'Examiner Name'|translate}}:</span>{{s.examiner_name}}
+                                    </div>
+                                    <div class="col-md-12">
+                                      <span style="color: #82004a;">       {{'Date'|translate}}:</span>{{s.created_at}}
+                                    </div>
+                                  </div>
+                                  <br>
+                                  <div class="text-center">
+                                      <h4> <span style="color: #82004a;"> {{'Assessment tools used in this report:'|translate}}</span>
+                                      </h4>
+                                  
+                                    <h6>{{s.report_name}}
+                                    </h6>
+
+                                    <h6>{{s.second_tool}}
+                                    </h6>
+
+                                  </div>
+                                </div>
+                              </div>
+                        </tab>
+                          <tab heading="{{'General definition of Test'|translate}}">
+                              
+                            
+                            <div class="card" style="margin-top: 30px;">
+                                <div class="card-body">
+                                 
+                                  <div>
+                                      
+                                  
+                                    <h6>  <span style="color: #82004a;"> {{description}}</span> </h6>
+
+                                 
+
+                                  </div>
+                                </div>
+                              </div>                        
+                        </tab>
+                          <tab heading="{{'My own style'|translate}}">
+                              
+              <div  class="row" style="margin-top: 30px;">
+                 <div class="col-md-6">
+
+                    <table class="table">
+                        <thead class="thead-dark">
+                          <tr>
+                            <th scope="col">{{'id'|translate}}</th>
+                            <th scope="col">{{'style'|translate}}</th>
+                            <th scope="col">{{'rate'|translate}}</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let s of tablenames ; let i = index ">
+                            <th scope="row">{{i}}</th>
+                            <td>{{s.name}}</td>
+                            <td>{{s.degree}}
+                            </td>
+                         
+                          </tr>
+                  
+                         
+                   
+                        
+                        </tbody>
+                      </table>
+                  
+
+                 </div>
+
+              
+              <div class="col-md-6"  *ngIf="barChartData?.length != 0">
+          <h3 class="text-center"><b>{{'Major tendencies'|translate}}</b>
+          </h3>
+                <div style="display: block">
+                  <canvas baseChart
+                    [datasets]="barChartData"
+                    [labels]="barChartLabels"
+                    [options]="barChartOptions"
+                    [legend]="barChartLegend"
+                    [chartType]="barChartType">
+                  </canvas>
+                </div>
+                
+            </div> 
+            <br>
+          
+            <div class="col-md-12" style="margin-top: 50px;">
+                <p>
+                  <span style="color: #82004a;">{{'The main results of the scale indicate that you have a tendency towards environments (research-social-adventurous-organizer)'|translate}}</span></p>
+            </div>
+
+                
+            </div>
+            <div class="row" *ngFor="let s of codedescription">
+                <div class="col-md-1"><p><span style="color: #82004a;">{{s.name}}:</span> </p></div>
+                <div class="col-md-11"><p>{{s.mission}} </p></div>
+
+                       
+            </div>
+
+                            
+                        </tab>
+
+                         <tab heading="{{'Sub-tendencies'|translate}}">
+
+                            <div  class="row" style="margin-top: 30px;">
+                              <div class="col-md-3"> </div>
+             
+                           
+                           <div class="col-md-6"  *ngIf="barChartData1?.length != 0">
+                       <h3 class="text-center"><b>{{'Sub-tendencies of the regulator style'|translate}}
+                      </b>
+                       </h3>
+                             <div style="display: block">
+                               <canvas baseChart
+                                 [datasets]="barChartData1"
+                                 [labels]="barChartLabels1"
+                                 [options]="barChartOptions"
+                                 [legend]="barChartLegend"
+                                 [chartType]="barChartType">
+                               </canvas>
+                             </div>
+                             
+                         </div>
+
+
+                         <div class="col-md-3"> </div>
+</div>
+
+
+
+
+<div  class="row" style="margin-top: 50px;">
+  <div class="col-md-3"> </div>
+
+
+<div class="col-md-6" *ngIf="barChartData2?.length != 0">
+<h3 class="text-center"><b>{{'Sub-tendencies of the Realist style'|translate}}
+
+</b>
+</h3>
+ <div style="display: block">
+   <canvas baseChart
+     [datasets]="barChartData2"
+     [labels]="barChartLabels2"
+     [options]="barChartOptions"
+     [legend]="barChartLegend"
+     [chartType]="barChartType">
+   </canvas>
+ </div>
+ 
+</div>
+
+
+<div class="col-md-3"> </div>
+</div>
+
+
+
+                       
+
+
+<div  class="row" style="margin-top: 50px;">
+  <div class="col-md-3"> </div>
+
+
+<div class="col-md-6"  *ngIf="barChartData3?.length != 0">
+<h3 class="text-center"><b>{{'Subcleaning tendencies of my research style'|translate}}
+
+</b>
+</h3>
+ <div style="display: block">
+   <canvas baseChart
+     [datasets]="barChartData3"
+     [labels]="barChartLabels3"
+     [options]="barChartOptions"
+     [legend]="barChartLegend"
+     [chartType]="barChartType">
+   </canvas>
+ </div>
+ 
+</div>
+
+
+<div class="col-md-3"> </div>
+</div>
+        
+
+
+                     
+
+
+                            <div  class="row" style="margin-top: 50px;">
+                              <div class="col-md-3"> </div>
+                            
+                            
+                            <div class="col-md-6"  *ngIf="barChartData4?.length != 0">
+                            <h3 class="text-center"><b>{{'Sub-tendencies of the artist style'|translate}}
+
+                            
+                            </b>
+                            </h3>
+                             <div style="display: block">
+                               <canvas baseChart
+                                 [datasets]="barChartData4"
+                                 [labels]="barChartLabels4"
+                                 [options]="barChartOptions"
+                                 [legend]="barChartLegend"
+                                 [chartType]="barChartType">
+                               </canvas>
+                             </div>
+                             
+                            </div>
+                            
+                            
+                            <div class="col-md-3"> </div>
+                            </div>
+                                    
+                
+                            
+
+
+                                <div  class="row" style="margin-top: 50px;">
+                                  <div class="col-md-3"> </div>
+                                
+                                
+                                <div class="col-md-6"  *ngIf="barChartData5?.length != 0">
+                                <h3 class="text-center"><b>{{'Sub-tendencies of a social style'|translate}}
+
+    
+                                
+                                </b>
+                                </h3>
+                                 <div style="display: block">
+                                   <canvas baseChart
+                                     [datasets]="barChartData5"
+                                     [labels]="barChartLabels5"
+                                     [options]="barChartOptions"
+                                     [legend]="barChartLegend"
+                                     [chartType]="barChartType">
+                                   </canvas>
+                                 </div>
+                                 
+                                </div>
+                                
+                                
+                                <div class="col-md-3"> </div>
+                                </div>
+
+
+
+
+                                      <div  class="row" style="margin-top: 50px;">
+                                        <div class="col-md-3"> </div>
+                                      
+                                      
+                                      <div class="col-md-6"  *ngIf="barChartData6?.length != 0">
+                                      <h3 class="text-center"><b>{{'Subordinate tendencies of the adventurous style'|translate}}
+
+      
+          
+                                      
+                                      </b>
+                                      </h3>
+                                       <div style="display: block">
+                                         <canvas baseChart
+                                           [datasets]="barChartData6"
+                                           [labels]="barChartLabels6"
+                                           [options]="barChartOptions"
+                                           [legend]="barChartLegend"
+                                           [chartType]="barChartType">
+                                         </canvas>
+                                       </div>
+                                       
+                                      </div>
+                                      
+                                      
+                                      <div class="col-md-3"> </div>
+                                      </div>
+                         
+                   
+
+
+</tab> 
+
+
+                          <tab heading="{{'Personality Features'|translate}}"> 
+                                  <div class="card" style="margin-top: 30px;">
+                            <div class="card-body">
+                             
+                              <div>
+                                  
+                              
+                                <h6 *ngFor="let s of characterictic">
+
+                                  {{s.characteristic}}
+                                </h6>
+
+                             
+
+                              </div>
+                            </div>
+                          </div>     </tab>
+
+
+                          <tab heading="{{'Business and tasks'|translate}}">
+                            <div class="card" style="margin-top: 30px;">
+                                <div class="card-body">
+                                 
+                                  <div>
+                                      
+                                  
+                                    <h6 *ngFor="let s of missionsjobs">
+                                      {{s.mission}}
+                                    </h6>
+
+                                 
+
+                                  </div>
+                                </div>
+                              </div>     
+                          </tab>
+
+
+                          <tab heading="{{'Jobs closest to my model'|translate}}"> 
+                            <br>
+                             <div class="row" *ngFor="let s of suitablejob; let i = index">
+
+                              <br>
+                            <div class="col-md-12"><p>{{i}}.{{s.answer}} </p></div>
+            
+                                   
+                        </div></tab>
+                          <tab heading="{{'General suggestions and recommendations'|translate}}">
+
+                           
+
+                              
+                            <div class="card" style="margin-top: 30px;">
+                              <div class="card-body">
+                               
+                                <div>
+                                    
+                                
+                                  <h6>  <span style="color: #82004a;">{{suggestions}} </span> </h6>
+
+                               
+
+                                </div>
+                              </div>
+                            </div>  
+                          </tab>
+
+
+                        </tabset>
+                      </div>     
+
+         
+
+
+
+         
+
+            </div>
+
+
+            
+    </div>
+    </div>
+    </div>
+
+</main>
+
+
+<!-- !Preloader -->
+<div id="page-preloader" *ngIf="showSpinner">
+
+  <div id="spinner-three">
+    <div id="inner"></div>
+    <div id="outer"></div>
+  </div>
+
+</div>
+<!-- /// !Preloader -->
+

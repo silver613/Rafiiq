@@ -1,0 +1,3261 @@
+<main class="margin_60_35" style="padding-top: 80px">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 pd-10">
+        <div class="card-details-wrapper card-box-shadow">
+          <div class="profile-userpic">
+            <img
+              *ngIf="userdata?.image != null"
+              src="{{ imageURL }}/uploads/users/{{ userdata?.image }}"
+              class="img-responsive"
+            />
+            <img
+              *ngIf="userdata?.image == null"
+              src="{{ ImageURl }}"
+              class="img-responsive"
+            />
+          </div>
+          <div class="profile-usertitle">
+            <div class="profile-usertitle-name">
+              <span>{{ userdata?.first_name }} {{ userdata?.last_name }}</span>
+            </div>
+            <div class="user-mail">
+              <span>{{ userdata?.email }}</span>
+            </div>
+          </div>
+
+          <div class="profile-usermenu">
+            <div
+              class="nav flex-column nav-pills"
+              id="v-pills-tab"
+              role="tablist"
+              aria-orientation="vertical"
+            >
+              <a
+                class="nav-link active"
+                id="v-pills-home-tab"
+                data-toggle="pill"
+                href="#v-pills-home"
+                role="tab"
+                aria-controls="v-pills-home"
+                aria-selected="true"
+                ><i class="icon-videocam"></i> {{ "Reservations" | translate }}
+              </a>
+              <a
+                class="nav-link"
+                id="v-pills-reports-tab"
+                data-toggle="pill"
+                href="#v-pills-reports"
+                role="tab"
+                aria-controls="v-pills-reports"
+                aria-selected="false"
+                ><i class="icon-doc-text-inv-1"></i> {{ "Reports" | translate }}
+              </a>
+              <a
+                class="nav-link"
+                id="v-pills-account-tab"
+                data-toggle="pill"
+                href="#v-pills-account"
+                role="tab"
+                aria-controls="v-pills-account"
+                aria-selected="false"
+                ><i class="icon-credit-card-4"></i> {{ "Wallet" | translate }}
+              </a>
+              <a
+                class="nav-link"
+                id="v-pills-settingss-tab"
+                data-toggle="pill"
+                href="#v-pills-settingss"
+                role="tab"
+                aria-controls="v-pills-settingss"
+                aria-selected="false"
+                ><i class="icon-cog"></i> {{ "Settings" | translate }}
+              </a>
+              <!-- <a  *ngIf="state=='student'" class="nav-link" id="v-pills-rating-tab" data-toggle="pill" href="#v-pills-rating" role="tab" aria-controls="v-pills-rating" aria-selected="false"><i class=" icon-thumbs-up-2"></i> {{'Rating'|translate}} </a> -->
+              <a
+                *ngIf="state != 'student'"
+                class="nav-link"
+                id="v-pills-child-tab"
+                data-toggle="pill"
+                href="#v-pills-child"
+                role="tab"
+                aria-controls="v-pills-child"
+                aria-selected="false"
+                ><i class="icon-users-2"></i> {{ "My Childern" | translate }}
+              </a>
+              <!-- <a [hidden]="state!='student'" *ngIf="state=='student'" class="nav-link" id="v-pills-tests-tab" data-toggle="pill" href="#v-pills-tests" role="tab" aria-controls="v-pills-tests" aria-selected="false"><i class="icon-desktop" ></i> {{'My Tests'|translate}} </a> -->
+
+              <a
+                *ngIf="state == 'trainer'"
+                class="nav-link"
+                id="v-pills-timeline-tab"
+                data-toggle="pill"
+                href="#v-pills-timeline"
+                role="tab"
+                aria-controls="v-pills-timeline-tab"
+                aria-selected="false"
+                ><i class="fa fa-calendar"></i>
+                {{ "My Appointments" | translate }}
+              </a>
+              <a
+                *ngIf="state == 'trainer'"
+                class="nav-link"
+                id="v-pills-lang-tab"
+                data-toggle="pill"
+                href="#v-pills-lang"
+                role="tab"
+                aria-controls="v-pills-lang-tab"
+                aria-selected="false"
+                ><i class="fa fa-language"></i> {{ "My Languages" | translate }}
+              </a>
+              <a
+                *ngIf="state == 'trainer'"
+                class="nav-link"
+                id="v-pills-Certif-tab"
+                data-toggle="pill"
+                href="#v-pills-Certif"
+                role="tab"
+                aria-controls="v-pills-Certif-tab"
+                aria-selected="false"
+                ><i class="fa fa-graduation-cap"></i>
+                {{ "My Certification" | translate }}
+              </a>
+              <a
+                *ngIf="state == 'trainer'"
+                class="nav-link"
+                id="v-pills-spacial-tab"
+                data-toggle="pill"
+                href="#v-pills-spacial"
+                role="tab"
+                aria-controls="v-pills-spacial-tab"
+                aria-selected="false"
+                ><i class="fa fa-folder"></i> {{ "My Spacialists" | translate }}
+              </a>
+              <a
+                *ngIf="state == 'trainer'"
+                class="nav-link"
+                id="v-pills-classes-tab"
+                data-toggle="pill"
+                href="#v-pills-classes"
+                role="tab"
+                aria-controls="v-pills-classes-tab"
+                aria-selected="false"
+                ><i class="icon-home-1"></i> {{ "My Classes" | translate }}
+              </a>
+
+              <a
+                *ngIf="state == 'trainer'"
+                class="nav-link"
+                id="v-pills-commonReports-tab"
+                data-toggle="pill"
+                href="#v-pills-commonReports"
+                role="tab"
+                aria-controls="v-pills-commonReports-tab"
+                aria-selected="false"
+                ><i class="icon-layers"></i> {{ "common Reports" | translate }}
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <a [routerLink]="'/GridList'" class="orange-btn fullWidth">{{
+              "Book new session" | translate
+            }}</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+        <div class="card-details-wrapper card-box-shadow">
+          <div class="tab-content" id="v-pills-tabContent">
+            <div
+              class="tab-pane fade show active"
+              id="v-pills-home"
+              role="tabpanel"
+              aria-labelledby="v-pills-home-tab"
+            >
+              <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                  <div
+                    class="first col col-lg-12 col-md-12 col-sm-12 text-container container"
+                  >
+                    <div class="pb-5">
+                      <ul class="nav nav-tabs">
+                        <li class=" ">
+                          <a
+                            class="upcomingTrips-btn show active"
+                            data-toggle="tab"
+                            href="#upcomingTrips"
+                          >
+                            {{ "User Sessions" | translate }}
+                            <span class="badge badge-danger">{{
+                              nextcount
+                            }}</span>
+                          </a>
+                        </li>
+
+                        <li>
+                          <a
+                            data-toggle="tab"
+                            href="#trianersession"
+                            *ngIf="state == 'trainer'"
+                            >{{ "Trainer Sessions" | translate }}
+                            <span class="badge badge-danger">{{
+                              trainercount
+                            }}</span>
+                          </a>
+                        </li>
+                        <li>
+                          <a data-toggle="tab" href="#previousTrips"
+                            >{{ "Previous Sessions" | translate }}
+                            <span class="badge badge-danger">{{
+                              previousecount
+                            }}</span>
+                          </a>
+                        </li>
+                      </ul>
+
+                      <div class="mt-3">
+                        <div class="tab-content">
+                          <div
+                            id="upcomingTrips"
+                            class="tab-pane fade in active show"
+                          >
+                            <div
+                              class="row message-wrapper"
+                              *ngIf="!nextsession"
+                            >
+                              <div
+                                class="col-lg-12 col-md-12 col-sm-12 text-center"
+                              >
+                                <i class="icon-videocam"></i>
+                                <h4>{{ "No sessions yet" | translate }}</h4>
+                              </div>
+                            </div>
+
+                            <div
+                              class="col-sm-12"
+                              *ngFor="let s of nextsession"
+                            >
+                              <div
+                                class="panel panel-default panel-block"
+                                style="margin-top: 15px"
+                              >
+                                <div class="panel-body body-reserv">
+                                  <div class="row">
+                                    <div
+                                      class="col-lg-3 col-md-3 col-sm-3 img-thirapist"
+                                    >
+                                      <div>
+                                        <img
+                                          *ngIf="s.image != null"
+                                          class="card-circular"
+                                          src="{{ imageURL }}/uploads/users/{{
+                                            s.image
+                                          }}"
+                                        />
+
+                                        <img
+                                          *ngIf="s.image == null"
+                                          class="card-circular"
+                                          src="{{ ImageURl }}"
+                                        />
+
+                                        <div>
+                                          <strong class="name-thirapist">
+                                            <span>{{ s.trainer_name }}</span>
+                                          </strong>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="col-lg-9 col-md-9 col-sm-9">
+                                      <div class="row"></div>
+                                      <div class="row">
+                                        <div class="col-lg-4 col-md-4 col-sm-4">
+                                          <i class="icon-calendar-circled"></i>
+                                          <label>
+                                            {{ s.date }}
+                                          </label>
+                                        </div>
+                                        <div class="col-lg-4 col-md-4 col-sm-4">
+                                          <label>
+                                            <i class="icon-credit-card-4"></i>
+                                            {{ s.price }}
+                                            {{ "EGP" | translate }}
+                                          </label>
+                                        </div>
+
+                                        <div class="col-lg-4 col-md-4 col-sm-4">
+                                          <label>
+                                            <!-- <div>
+                                              {{
+                                                s.time_from
+                                                  | meetingTime: s.time_to
+                                              }}
+                                              {{
+                                                s.date
+                                                  | sessionTime
+                                                    : s.time_from
+                                                    : s.time_to
+                                              }}
+                                            </div> -->
+                                            <button
+                                              class="btn"
+                                              [disabled]="
+                                                (s.date
+                                                  | sessionTime: s.time_from) >=
+                                                  0 ||
+                                                (s.date
+                                                  | sessionTime: s.time_from) <
+                                                  (s.time_from
+                                                    | meetingTime: s.time_to)
+                                              "
+                                              (click)="
+                                                goMeeting(
+                                                  s.meeting_id,
+                                                  s.password,
+                                                  s.type,
+                                                  s.start_url
+                                                )
+                                              "
+                                              style="cursor: pointer"
+                                            >
+                                              <i
+                                                class="icon-videocam"
+                                                style="font-size: 26px"
+                                              ></i>
+                                            </button>
+                                          </label>
+                                        </div>
+
+                                        <div class="col-lg-4 col-md-4 col-sm-4">
+                                          <i class="icon-clock-8"></i>
+                                          <label>
+                                            {{ "from" | translate }}
+                                            {{ s.time_from }}
+                                          </label>
+                                        </div>
+                                        <div class="col-lg-4 col-md-4 col-sm-4">
+                                          <label>
+                                            <i class="icon-stopwatch"></i>
+                                            {{ "to" | translate }}
+                                            {{ s.time_to }}
+                                          </label>
+                                        </div>
+
+                                        <div class="col-lg-4 col-md-4 col-sm-4">
+                                          <label *ngIf="state == 'trainer'">
+                                            <i
+                                              class="icon-doc-text-inv-1"
+                                              style="
+                                                cursor: pointer;
+                                                font-size: 26px;
+                                              "
+                                              (click)="
+                                                open23(
+                                                  content23,
+                                                  s.reservation_id,
+                                                  s.user_id
+                                                )
+                                              "
+                                            ></i>
+                                          </label>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="panel-footer clearfix">
+                                  <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-sm-6">
+                                      <h5>
+                                        <i
+                                          >{{ "Reserved" | translate }} @
+                                          {{ s.date }} {{ s.time_from }}</i
+                                        >
+                                      </h5>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-6">
+                                      <div class="dir-text">
+                                        <span>
+                                          <button
+                                            class="white-btn"
+                                            (click)="cancel(s.reservation_id)"
+                                          >
+                                            {{ "Cancel" | translate }}
+                                          </button>
+                                        </span>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div
+                            id="trianersession"
+                            class="tab-pane fade"
+                            *ngIf="state == 'trainer'"
+                          >
+                            <div
+                              class="row message-wrapper"
+                              *ngIf="!trainerseesions"
+                            >
+                              <div
+                                class="col-lg-12 col-md-12 col-sm-12 text-center"
+                              >
+                                <i class="icon-videocam"></i>
+                                <h4>{{ "No sessions yet" | translate }}</h4>
+                              </div>
+                            </div>
+
+                            <div
+                              class="col-sm-12"
+                              *ngFor="let s of trainerseesions"
+                            >
+                              <div
+                                class="panel panel-default panel-block"
+                                style="margin-top: 15px"
+                              >
+                                <div class="panel-body body-reserv">
+                                  <div class="row">
+                                    <div
+                                      class="col-lg-3 col-md-3 col-sm-3 img-thirapist"
+                                    >
+                                      <div>
+                                        <img
+                                          *ngIf="s.image != null"
+                                          class="card-circular"
+                                          src="{{ imageURL }}/uploads/users/{{
+                                            s.image
+                                          }}"
+                                        />
+
+                                        <img
+                                          *ngIf="s.image == null"
+                                          class="card-circular"
+                                          src="{{ ImageURl }}"
+                                        />
+
+                                        <div>
+                                          <strong class="name-thirapist">
+                                            <span>{{ s.trainer_name }}</span>
+                                          </strong>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="col-lg-9 col-md-9 col-sm-9">
+                                      <div class="row"></div>
+                                      <div class="row">
+                                        <div class="col-lg-4 col-md-4 col-sm-4">
+                                          <i class="icon-calendar-circled"></i>
+                                          <label>
+                                            {{ s.date }}
+                                          </label>
+                                        </div>
+                                        <div class="col-lg-4 col-md-4 col-sm-4">
+                                          <label>
+                                            <i class="icon-credit-card-4"></i>
+                                            {{ s.price }}
+                                            {{ "EGP" | translate }}
+                                          </label>
+                                        </div>
+                                        <div class="col-lg-4 col-md-4 col-sm-4">
+                                          <label>
+                                            <!-- <a (click)="getifmeeting(s.time_from,s.time_to,s.date)" style="cursor: pointer;"> <i class="icon-videocam" style="font-size: 26px;"></i>    </a> -->
+                                            <a
+                                              href="https://zoom.rafiiq.net/?id={{
+                                                s.idnumberzoom
+                                              }}"
+                                              target="_blank"
+                                              style="cursor: pointer"
+                                            >
+                                              <i
+                                                class="icon-videocam"
+                                                style="font-size: 26px"
+                                              ></i>
+                                            </a>
+                                          </label>
+                                        </div>
+
+                                        <div class="col-lg-4 col-md-4 col-sm-4">
+                                          <i class="icon-clock-8"></i>
+                                          <label>
+                                            {{ "from" | translate }}
+                                            {{ s.time_from }}
+                                          </label>
+                                        </div>
+                                        <div class="col-lg-4 col-md-4 col-sm-4">
+                                          <label>
+                                            <i class="icon-stopwatch"></i>
+                                            {{ "to" | translate }}
+                                            {{ s.time_to }}
+                                          </label>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="panel-footer clearfix">
+                                  <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-sm-6">
+                                      <h5>
+                                        <i
+                                          >{{ "Reserved" | translate }} @
+                                          {{ s.date }} {{ s.time_from }}</i
+                                        >
+                                      </h5>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-6">
+                                      <div class="dir-text">
+                                        <span>
+                                          <button
+                                            class="white-btn"
+                                            type="submit"
+                                            (click)="cancel(s.reservation_id)"
+                                          >
+                                            {{ "Cancel" | translate }}
+                                          </button>
+                                        </span>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div id="previousTrips" class="tab-pane fade">
+                            <div
+                              class="row message-wrapper"
+                              *ngIf="!previoussession"
+                            >
+                              <div
+                                class="col-lg-12 col-md-12 col-sm-12 text-center"
+                              >
+                                <i class="icon-videocam"></i>
+                                <h4>{{ "No sessions yet" | translate }}</h4>
+                              </div>
+                            </div>
+
+                            <div
+                              class="col-sm-12"
+                              *ngFor="let s of previoussession"
+                            >
+                              <div
+                                class="panel panel-default panel-block"
+                                style="margin-top: 15px"
+                              >
+                                <div class="panel-body body-reserv">
+                                  <div class="row">
+                                    <div
+                                      class="col-lg-3 col-md-3 col-sm-3 img-thirapist"
+                                    >
+                                      <div>
+                                        <img
+                                          *ngIf="s.image != null"
+                                          class="card-circular"
+                                          src="{{ imageURL }}/uploads/users/{{
+                                            s.image
+                                          }}"
+                                        />
+                                        <img
+                                          *ngIf="s.image == null"
+                                          class="card-circular"
+                                          src="{{ ImageURl }}"
+                                        />
+
+                                        <div>
+                                          <strong class="name-thirapist">
+                                            <span>{{ s.trainer_name }}</span>
+                                          </strong>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="col-lg-9 col-md-9 col-sm-9">
+                                      <div class="row">
+                                        <div
+                                          class="col-lg-12 col-md-12 col-sm-612"
+                                        >
+                                          <i class="icon-calendar-circled"></i>
+                                          <label>
+                                            {{ s.date }}
+                                          </label>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-6">
+                                          <i class="icon-clock-8"></i>
+                                          <label>
+                                            {{ "from" | translate }}
+                                            {{ s.time_from }}
+                                          </label>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-6">
+                                          <label>
+                                            <i class="icon-stopwatch"></i>
+                                            {{ "to" | translate }}
+                                            {{ s.time_to }}
+                                          </label>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="panel-footer clearfix">
+                                  <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-sm-6">
+                                      <h5>
+                                        <i
+                                          >{{ "Reserved" | translate }} @
+                                          {{ s.date }} {{ s.time_from }}</i
+                                        >
+                                      </h5>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="tab-pane fade"
+              id="v-pills-reports"
+              role="tabpanel"
+              aria-labelledby="v-pills-reports-tab"
+            >
+              <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                  <div
+                    class="first col col-lg-12 col-md-12 col-sm-12 text-container container"
+                  >
+                    <div class="pb-5">
+                      <ul class="nav nav-tabs">
+                        <li>
+                          <a
+                            data-toggle="tab"
+                            href="#ZoomReports"
+                            *ngIf="state != 'trainer'"
+                            >{{ "Zoom Reports" | translate }}
+                            <!-- <span class="badge badge-danger ">{{trainercount}}</span> -->
+                          </a>
+                        </li>
+                      </ul>
+
+                      <div class="mt-3">
+                        <div class="tab-content">
+                          <div
+                            id="ZoomReports"
+                            class="tab-pane fade"
+                            *ngIf="state != 'trainer'"
+                          >
+                            <div
+                              class="row message-wrapper"
+                              *ngIf="!zoomreports"
+                            >
+                              <div
+                                class="col-lg-12 col-md-12 col-sm-12 text-center"
+                              >
+                                <i class="icon-doc-text-inv-1"></i>
+                                <h4>{{ "No Reports yet" | translate }}</h4>
+                              </div>
+                            </div>
+
+                            <div class="col-sm-12" *ngIf="zoomreports">
+                              <table class="table">
+                                <thead>
+                                  <tr>
+                                    <th scope="col">
+                                      {{ "Trainer Name" | translate }}
+                                    </th>
+                                    <th scope="col">
+                                      {{ "Report Content" | translate }}
+                                    </th>
+                                    <th scope="col">
+                                      {{ "Report File" | translate }}
+                                    </th>
+
+                                    <th scope="col">
+                                      {{ "Date" | translate }}
+                                    </th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr *ngFor="let s of zoomreports">
+                                    <td>
+                                      {{ s.first_name }} {{ s.last_name }}
+                                    </td>
+                                    <td>
+                                      <p>{{ s.content }}</p>
+                                    </td>
+                                    <td>
+                                      <button
+                                        [disabled]="
+                                          !s.image && !s.pdf && !s.video
+                                        "
+                                        (click)="downloadFile(s)"
+                                        class="primary-btn fullWidth-mob mt-ladda-btn ladda-button"
+                                      >
+                                        {{ "Download" | translate }}
+                                      </button>
+
+                                      <!-- <img
+                                        *ngIf="s.image != null"
+                                        src="{{
+                                          imageURL
+                                        }}/uploads/sessionReports/{{ s.image }}"
+                                      />
+
+                                      <video
+                                        *ngIf="s.video != null"
+                                        style="
+                                          max-width: 450px;
+                                          max-height: 275px;
+                                        "
+                                        controls
+                                      >
+                                        <source
+                                          src="{{
+                                            imageURL
+                                          }}/uploads/sessionReports/{{
+                                            s.video
+                                          }}"
+                                          type="video/mp4"
+                                        />
+                                      </video>
+                                      <a *ngIf="s.pdf != null">{{ s.pdf }}</a> -->
+                                    </td>
+                                    <td>{{ s.date }}</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="tab-pane fade"
+              id="v-pills-account"
+              role="tabpanel"
+              aria-labelledby="v-pills-account-tab"
+            >
+              <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                  <div class="text-center">
+                    <h3 class="vx_text-3_regular">
+                      {{ "Your current balance" | translate }}
+                    </h3>
+                    <div class="Account">
+                      <p class="balanceDetails-amount">
+                        <i class="icon-credit-card-4"></i>
+                        ‪{{ credit }} &nbsp; {{ "EGY" | translate }}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                  <div
+                    class="first col col-lg-12 col-md-12 col-sm-12 text-container container"
+                  >
+                    <div class="pb-5">
+                      <ul class="nav nav-tabs">
+                        <li class=" ">
+                          <a
+                            class="upcomingTrips-btn show active"
+                            data-toggle="tab"
+                            href="#transfer"
+                          >
+                            {{ "Balance Transfer" | translate }}
+                          </a>
+                        </li>
+                        <li>
+                          <a data-toggle="tab" href="#previousdealing"
+                            >{{ "Previous Transactions" | translate }}
+                          </a>
+                        </li>
+                        <li>
+                          <a data-toggle="tab" href="#rechargewallet">
+                            {{ "Recharge" | translate }}
+                          </a>
+                        </li>
+                      </ul>
+
+                      <div class="mt-3">
+                        <div class="tab-content">
+                          <div
+                            id="transfer"
+                            class="tab-pane fade in active show"
+                          >
+                            <form
+                              #form="ngForm"
+                              (ngSubmit)="submitForm1(emails, balnce)"
+                            >
+                              <div class="form-row">
+                                <div class="form-group col-md-12 col-xs-12">
+                                  <label class="control-label">
+                                    {{ "Transferred data" | translate }}
+                                  </label>
+                                  <input
+                                    #emails
+                                    name="emails"
+                                    type="text"
+                                    class="form-control"
+                                    placeholder="{{
+                                      'Enter Phone Number OR Email OR Code'
+                                        | translate
+                                    }}"
+                                  />
+                                </div>
+
+                                <div class="form-group col-md-12 col-xs-12">
+                                  <label class="control-label">
+                                    {{ "The value of the balance" | translate }}
+                                  </label>
+                                  <input
+                                    #balnce
+                                    name="balnce"
+                                    type="number"
+                                    class="form-control"
+                                    placeholder="{{
+                                      'Enter value' | translate
+                                    }}"
+                                  />
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="col-lg-12 dir-text">
+                                  <div class="form-group">
+                                    <button
+                                      type="submit"
+                                      class="primary-btn fullWidth-mob mt-ladda-btn ladda-button"
+                                      data-style="slide-right"
+                                    >
+                                      <span class="ladda-label">
+                                        {{ "Transfer" | translate }}
+                                      </span>
+                                      <span class="ladda-spinner"></span
+                                      ><span class="ladda-spinner"></span>
+                                    </button>
+                                  </div>
+                                </div>
+                              </div>
+                            </form>
+                          </div>
+
+                          <div id="previousdealing" class="tab-pane fade">
+                            <div
+                              class="row message-wrapper"
+                              *ngIf="!PreviousDealings"
+                            >
+                              <div
+                                class="col-lg-12 col-md-12 col-sm-12 text-center"
+                              >
+                                <i class="icon-credit-card-4"></i>
+                                <h4>
+                                  {{ "No Previous Dealings yet" | translate }}
+                                </h4>
+                              </div>
+                            </div>
+
+                            <div
+                              class="col-sm-12"
+                              *ngFor="let s of PreviousDealings"
+                            >
+                              <div
+                                class="panel panel-default panel-block"
+                                style="margin-top: 15px"
+                              >
+                                <div class="panel-body body-reserv">
+                                  <div class="row">
+                                    <div class="col-lg-3 col-md-3 col-sm-3">
+                                      <div>
+                                        <div>
+                                          <h6 style="color: #16a9ff">
+                                            {{ "Dealing Type" | translate }}
+                                          </h6>
+
+                                          <strong class="name-thirapist">
+                                            <span>{{ s.dealing_name }}</span>
+                                          </strong>
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                    <div class="col-lg-3 col-md-3 col-sm-3">
+                                      <div>
+                                        <div>
+                                          <h6 style="color: #16a9ff">
+                                            {{ "Date" | translate }}
+                                          </h6>
+
+                                          <i class="icon-calendar-circled"></i>
+                                          <label>
+                                            {{ s.created_at }}
+                                          </label>
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                    <div class="col-lg-3 col-md-3 col-sm-3">
+                                      <div>
+                                        <div>
+                                          <h6 style="color: #16a9ff">
+                                            {{ "value" | translate }}
+                                          </h6>
+
+                                          <i class="icon-credit-card-4"></i>
+                                          <label>
+                                            {{ s.value }}
+                                          </label>
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                    <div
+                                      class="col-lg-3 col-md-3 col-sm-3"
+                                      *ngIf="s.receiver_name != null"
+                                    >
+                                      <div>
+                                        <div>
+                                          <h6 style="color: #16a9ff">
+                                            {{ "Receiver Name" | translate }}
+                                          </h6>
+
+                                          <i class="icon-calendar-circled"></i>
+                                          <label>
+                                            {{ s.receiver_name }}
+                                          </label>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div id="rechargewallet" class="tab-pane fade">
+                            <br />
+
+                            <div class="form-group">
+                              <div class="form-check form-check-inline ml-4">
+                                <input
+                                  class="form-check-input"
+                                  type="radio"
+                                  name="payway"
+                                  value="2"
+                                  disabled
+                                />
+                                <label
+                                  class="form-check-label"
+                                  for="inlineRadio2"
+                                  >{{ "Master Card" | translate }}</label
+                                >
+                              </div>
+
+                              <div class="form-check form-check-inline ml-4">
+                                <input
+                                  class="form-check-input"
+                                  type="radio"
+                                  name="payway"
+                                  value="3"
+                                  (click)="openModal(template)"
+                                />
+                                <label
+                                  class="form-check-label"
+                                  for="inlineRadio2"
+                                  >{{ "Vodafone Cash" | translate }}</label
+                                >
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="tab-pane fade"
+              id="v-pills-rating"
+              role="tabpanel"
+              aria-labelledby="v-pills-rating-tab"
+            >
+              <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                  <div
+                    class="first col col-lg-12 col-md-12 col-sm-12 text-container container"
+                  >
+                    <div class="pb-5">
+                      <ul class="nav nav-tabs">
+                        <!--  <li class=" ">
+                                                    <a class="upcomingTrips-btn show active" data-toggle="tab" href="#SchoolRating"  > 
+                                                        {{'School Rating'|translate}}
+                                                   
+                                                </a></li> -->
+                        <li>
+                          <a
+                            class="upcomingTrips-btn show active"
+                            data-toggle="tab"
+                            href="#MangementRating"
+                          >
+                            {{ "Mangement Rating" | translate }}
+                          </a>
+                        </li>
+                        <li>
+                          <a data-toggle="tab" href="#MyRating">
+                            {{ "My Rating" | translate }}
+                          </a>
+                        </li>
+                      </ul>
+
+                      <div class="mt-3">
+                        <div class="tab-content">
+                          <!-- <div id="SchoolRating" class="tab-pane fade in active show">
+                                                        <form  #form="ngForm" (ngSubmit)="submitformSchool(comment1)">
+
+                                                            <div class="box_general_3 write_review">
+                                                                <h1>{{'Write a review'|translate}} </h1>
+                                                                <div class="rating_submit">
+                                                                    <div class="form-group">
+                                                                  
+                                                                    <rating [max]="max" [readonly]="isReadonly"
+                                                                    (onHover)="hoveringOver($event)" 
+                                                                    [titles]="['one','two','three']" ></rating>
+                                             
+                                                                    </div>
+                                                                </div>
+                                                              
+                                                                <div class="form-group">
+                                                                    <label>{{'Your review'|translate}}</label>
+                                                                    <textarea class="form-control" style="height: 180px;" #comment1 name="comment1"  placeholder="{{'Write your review here ...'|translate}}"></textarea>
+                                                                </div>
+                                                          
+                                                             
+                                                               <button  class="btn_1" type="submit" >{{'Submit'|translate}}</button>
+                                                            </div>
+                                                            </form>
+    
+            
+                         
+                                                    </div> -->
+
+                          <div
+                            id="MangementRating"
+                            class="tab-pane fade in active show"
+                          >
+                            <form
+                              #form="ngForm"
+                              (ngSubmit)="submitformMangement(comment)"
+                            >
+                              <div class="box_general_3 write_review">
+                                <h1>{{ "Write a review" | translate }}</h1>
+                                <div class="rating_submit">
+                                  <div class="form-group">
+                                    <rating
+                                      [max]="max"
+                                      [readonly]="isReadonly"
+                                      (onHover)="hoveringOver1($event)"
+                                      [titles]="['one', 'two', 'three']"
+                                    ></rating>
+                                  </div>
+                                </div>
+
+                                <div class="form-group">
+                                  <label>{{ "Your review" | translate }}</label>
+                                  <textarea
+                                    class="form-control"
+                                    style="height: 180px"
+                                    #comment
+                                    name="comment"
+                                    placeholder="{{
+                                      'Write your review here ...' | translate
+                                    }}"
+                                  ></textarea>
+                                </div>
+
+                                <button class="btn_1" type="submit">
+                                  {{ "Submit" | translate }}
+                                </button>
+                              </div>
+                            </form>
+                          </div>
+
+                          <div id="MyRating" class="tab-pane fade">
+                            <form
+                              #form="ngForm"
+                              (ngSubmit)="submitformmyself()"
+                            >
+                              <div class="box_general_3 write_review">
+                                <h1>{{ "Write a review" | translate }}</h1>
+                                <div class="rating_submit">
+                                  <div class="form-group">
+                                    <rating
+                                      [max]="max"
+                                      [readonly]="isReadonly"
+                                      (onHover)="hoveringOver2($event)"
+                                      [titles]="['one', 'two', 'three']"
+                                    ></rating>
+                                  </div>
+                                </div>
+
+                                <button class="btn_1" type="submit">
+                                  {{ "Submit" | translate }}
+                                </button>
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="tab-pane fade"
+              id="v-pills-settingss"
+              role="tabpanel"
+              aria-labelledby="v-pills-settingss-tab"
+            >
+              <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                  <div
+                    class="first col col-lg-12 col-md-12 col-sm-12 text-container container"
+                  >
+                    <div class="pb-5">
+                      <ul class="nav nav-tabs">
+                        <li class=" ">
+                          <a
+                            class="upcomingTrips-btn show active"
+                            data-toggle="tab"
+                            href="#PersonalInfo"
+                          >
+                            {{ "Personal Info" | translate }}
+                          </a>
+                        </li>
+                        <li>
+                          <a data-toggle="tab" href="#ChangePassword"
+                            >{{ "Change Password" | translate }}
+                          </a>
+                        </li>
+                        <li *ngIf="state == 'trainer'">
+                          <a data-toggle="tab" href="#pVideo"
+                            >{{ "personal video" | translate }}
+                          </a>
+                        </li>
+                      </ul>
+
+                      <div class="mt-3">
+                        <div class="tab-content">
+                          <div
+                            id="PersonalInfo"
+                            class="tab-pane fade in active show"
+                          >
+                            <form>
+                              <div class="form-row">
+                                <div class="col-md-6 offset-3 pl-1">
+                                  <div id="preview">
+                                    <img
+                                      *ngIf="userdata?.image != null"
+                                      src="{{ imageURL }}/uploads/users/{{
+                                        userdata?.image
+                                      }}"
+                                      style="
+                                        width: 150px;
+                                        height: 150px;
+                                        border-radius: 50%;
+                                      "
+                                      class="img-fluid"
+                                    />
+                                    <img
+                                      *ngIf="userdata?.image == null"
+                                      src="{{ ImageURl }}"
+                                      style="
+                                        width: 150px;
+                                        height: 150px;
+                                        border-radius: 50%;
+                                      "
+                                      class="img-fluid"
+                                    />
+                                  </div>
+                                </div>
+
+                                <div class="form-group col-md-6 col-xs-6">
+                                  <label class="control-label">
+                                    {{ "Name" | translate }}
+                                  </label>
+                                  <input
+                                    disabled
+                                    type="text"
+                                    class="form-control"
+                                    value="{{ userdata?.first_name }}"
+                                  />
+                                </div>
+                                <div class="form-group col-md-6 col-xs-6">
+                                  <label class="control-label">
+                                    {{ "Last name" | translate }}
+                                  </label>
+                                  <input
+                                    disabled
+                                    type="text"
+                                    class="form-control"
+                                    value="{{ userdata?.last_name }}"
+                                  />
+                                </div>
+
+                                <div class="form-group col-md-6 col-xs-6">
+                                  <label class="control-label">
+                                    {{ "Username" | translate }}
+                                  </label>
+                                  <input
+                                    disabled
+                                    type="text"
+                                    class="form-control"
+                                    value="{{ userdata?.user_name }}"
+                                  />
+                                </div>
+
+                                <div class="form-group col-md-6 col-xs-6">
+                                  <label class="control-label">
+                                    {{ "Email" | translate }}
+                                  </label>
+                                  <input
+                                    disabled
+                                    type="text"
+                                    class="form-control"
+                                    value="{{ userdata?.email }}"
+                                  />
+                                </div>
+
+                                <div class="form-group col-md-6 col-xs-6">
+                                  <label class="control-label">
+                                    {{ "Phone" | translate }}
+                                  </label>
+                                  <input
+                                    disabled
+                                    type="text"
+                                    class="form-control"
+                                    value="{{ userdata?.phone }}"
+                                  />
+                                </div>
+
+                                <div class="form-group col-md-6 col-xs-6">
+                                  <label class="control-label">
+                                    {{ "Birth date" | translate }}
+                                  </label>
+                                  <input
+                                    disabled
+                                    type="date"
+                                    class="form-control"
+                                    value="{{ userdata?.birth_date }}"
+                                  />
+                                </div>
+
+                                <div class="form-group col-md-6 col-xs-6">
+                                  <label class="control-label">
+                                    {{ "Code" | translate }}
+                                  </label>
+                                  <input
+                                    disabled
+                                    type="text"
+                                    class="form-control"
+                                    value="{{ userdata?.code }}"
+                                  />
+                                </div>
+
+                                <div class="form-group col-md-6 col-xs-6">
+                                  <label class="control-label">{{
+                                    "country" | translate
+                                  }}</label>
+                                  <select
+                                    disabled
+                                    class="form-control"
+                                    value="{{ userdata?.country_name }}"
+                                  >
+                                    <option *ngFor="let s of allcountry">
+                                      {{ s.name }}
+                                    </option>
+                                  </select>
+                                </div>
+
+                                <div class="form-group col-md-12 col-xs-12">
+                                  <label class="control-label">
+                                    {{ "Nationality" | translate }}</label
+                                  >
+
+                                  <input
+                                    disabled
+                                    type="text"
+                                    class="form-control"
+                                    value="{{ userdata?.nationality }}"
+                                  />
+                                </div>
+
+                                <div
+                                  class="form-group col-md-12 col-xs-12"
+                                  *ngIf="state != 'student'"
+                                >
+                                  <label class="control-label">{{
+                                    "Job" | translate
+                                  }}</label>
+
+                                  <input
+                                    disabled
+                                    type="text"
+                                    class="form-control"
+                                    value="{{ userdata?.job }}"
+                                  />
+                                </div>
+
+                                <div
+                                  class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12"
+                                >
+                                  <label class="control-label">
+                                    {{ "Gender" | translate }}
+                                  </label>
+                                  <div class="form-group">
+                                    <div class="form-check form-check-inline">
+                                      <input
+                                        class="form-check-input"
+                                        type="radio"
+                                        name="gender"
+                                        [checked]="userdata?.gender == 'Male'"
+                                        disabled
+                                      />
+                                      <label
+                                        class="form-check-label"
+                                        for="inlineRadio1"
+                                        >{{ "Male" | translate }}</label
+                                      >
+                                    </div>
+                                    <div
+                                      class="form-check form-check-inline ml-4"
+                                    >
+                                      <input
+                                        class="form-check-input"
+                                        type="radio"
+                                        name="gender"
+                                        [checked]="userdata?.gender == 'Female'"
+                                        disabled
+                                      />
+                                      <label
+                                        class="form-check-label"
+                                        for="inlineRadio2"
+                                        >{{ "Female" | translate }}</label
+                                      >
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="col-lg-12 dir-text">
+                                  <div class="form-group">
+                                    <button
+                                      class="primary-btn fullWidth-mob mt-ladda-btn ladda-button"
+                                      data-style="slide-right"
+                                      style="cursor: pointer"
+                                      [routerLink]="'/updateprofile'"
+                                    >
+                                      <span class="ladda-label">
+                                        {{ "updat" | translate }}</span
+                                      >
+                                      <span class="ladda-spinner"></span
+                                      ><span class="ladda-spinner"></span>
+                                    </button>
+                                  </div>
+                                </div>
+                              </div>
+                            </form>
+                          </div>
+                          <div id="ChangePassword" class="tab-pane fade">
+                            <form
+                              [formGroup]="passwordsss"
+                              (ngSubmit)="submitFormPass(passwordsss)"
+                            >
+                              <div class="row">
+                                <div
+                                  class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+                                >
+                                  <div
+                                    class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12"
+                                  >
+                                    <label>{{
+                                      "Current Password" | translate
+                                    }}</label>
+                                    <input
+                                      [type]="
+                                        fieldTextType1 ? 'text' : 'password'
+                                      "
+                                      class="form-control"
+                                      name="currentpassword"
+                                      formControlName="currentpassword"
+                                      [ngClass]="{
+                                        'is-invalid': f.currentpassword.errors
+                                      }"
+                                    />
+                                    <div class="input-group-append loginaye">
+                                      <span class="input-group-text">
+                                        <i
+                                          class="fa"
+                                          [ngClass]="{
+                                            'fa-eye-slash': !fieldTextType1,
+                                            'fa-eye': fieldTextType1
+                                          }"
+                                          (click)="toggleFieldTextType1()"
+                                        ></i>
+                                      </span>
+                                    </div>
+                                    <div
+                                      *ngIf="
+                                        passwordsss.controls.currentpassword
+                                          .invalid &&
+                                        passwordsss.controls.currentpassword
+                                          .touched &&
+                                        passwordsss.controls.currentpassword
+                                          .dirty
+                                      "
+                                      style="color: red; margin: 0px 17px"
+                                    >
+                                      <span
+                                        *ngIf="
+                                          passwordsss.controls.currentpassword
+                                            .errors.required
+                                        "
+                                        >{{ "required" | translate }}</span
+                                      >
+                                    </div>
+                                  </div>
+
+                                  <div
+                                    class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12"
+                                  >
+                                    <label>{{
+                                      "New Password" | translate
+                                    }}</label>
+                                    <input
+                                      [type]="
+                                        fieldTextType2 ? 'text' : 'password'
+                                      "
+                                      class="form-control"
+                                      name="passwords"
+                                      formControlName="passwords"
+                                      (keyup)="checkpassword($event)"
+                                      [ngClass]="{
+                                        'is-invalid':
+                                          typeingpasswords && f.passwords.errors
+                                      }"
+                                    />
+                                    <div class="input-group-append loginaye">
+                                      <span class="input-group-text">
+                                        <i
+                                          class="fa"
+                                          [ngClass]="{
+                                            'fa-eye-slash': !fieldTextType2,
+                                            'fa-eye': fieldTextType2
+                                          }"
+                                          (click)="toggleFieldTextType2()"
+                                        ></i>
+                                      </span>
+                                    </div>
+                                    <div
+                                      *ngIf="
+                                        passwordsss.controls.passwords
+                                          .invalid &&
+                                        passwordsss.controls.passwords
+                                          .touched &&
+                                        passwordsss.controls.passwords.dirty
+                                      "
+                                      style="color: red; margin: 0px 17px"
+                                    >
+                                      <span
+                                        *ngIf="
+                                          passwordsss.controls.passwords.errors
+                                            .required
+                                        "
+                                        >{{ "required" | translate }}</span
+                                      >
+                                      <span
+                                        *ngIf="
+                                          passwordsss.controls.passwords.errors
+                                            .pattern
+                                        "
+                                        >{{
+                                          "you must enter 10 digit & at least one capital character"
+                                            | translate
+                                        }}</span
+                                      >
+                                    </div>
+                                  </div>
+                                  <div
+                                    class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12"
+                                  >
+                                    <label>{{
+                                      "Re-type New Password" | translate
+                                    }}</label>
+                                    <input
+                                      [type]="
+                                        fieldTextType3 ? 'text' : 'password'
+                                      "
+                                      class="form-control"
+                                      name="conpassword"
+                                      formControlName="conpassword"
+                                      [ngClass]="{
+                                        'is-invalid': f.conpassword.errors
+                                      }"
+                                    />
+                                    <div class="input-group-append loginaye">
+                                      <span class="input-group-text">
+                                        <i
+                                          class="fa"
+                                          [ngClass]="{
+                                            'fa-eye-slash': !fieldTextType3,
+                                            'fa-eye': fieldTextType3
+                                          }"
+                                          (click)="toggleFieldTextType3()"
+                                        ></i>
+                                      </span>
+                                    </div>
+                                    <div
+                                      *ngIf="
+                                        passwordsss.controls.conpassword
+                                          .invalid &&
+                                        passwordsss.controls.conpassword
+                                          .touched &&
+                                        passwordsss.controls.conpassword.dirty
+                                      "
+                                      style="color: red; margin: 0px 17px"
+                                    >
+                                      <span
+                                        *ngIf="
+                                          passwordsss.controls.conpassword
+                                            .errors.required
+                                        "
+                                        >{{ "required" | translate }}</span
+                                      >
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="col-lg-12 dir-text">
+                                  <div class="form-group">
+                                    <button
+                                      type="submit"
+                                      class="primary-btn fullWidth-mob mt-ladda-btn ladda-button"
+                                      data-style="slide-right"
+                                    >
+                                      <span class="ladda-label">
+                                        {{ "Save" | translate }}
+                                      </span>
+                                      <span class="ladda-spinner"></span
+                                      ><span class="ladda-spinner"></span>
+                                    </button>
+                                  </div>
+                                </div>
+                              </div>
+                            </form>
+                          </div>
+
+                          <div
+                            *ngIf="state == 'trainer'"
+                            id="pVideo"
+                            class="tab-pane fade"
+                          >
+                            <div class="row">
+                              <div class="col-lg-12 col-md-12 col-sm-12">
+                                <div
+                                  class="first col col-lg-12 col-md-12 col-sm-12 text-container container"
+                                >
+                                  <div class="pb-5">
+                                    <div class="mt-3">
+                                      <div class="tab-content">
+                                        <div
+                                          class="row message-wrapper"
+                                          *ngIf="video == null"
+                                        >
+                                          <div
+                                            class="col-lg-12 col-md-12 col-sm-12 text-center"
+                                          >
+                                            <i class="icon-play"></i>
+                                            <h4>
+                                              {{ "No video yet" | translate }}
+                                            </h4>
+                                          </div>
+                                        </div>
+
+                                        <div class="col-lg-12 dir-text">
+                                          <div class="form-group">
+                                            <button
+                                              style="cursor: pointer"
+                                              class="primary-btn fullWidth-mob mt-ladda-btn ladda-button"
+                                              data-style="slide-right"
+                                              (click)="openModal3(template3)"
+                                            >
+                                              <span class="ladda-label">
+                                                {{
+                                                  "Update video" | translate
+                                                }} </span
+                                              ><span
+                                                class="ladda-spinner"
+                                              ></span
+                                              ><span
+                                                class="ladda-spinner"
+                                              ></span>
+                                            </button>
+                                          </div>
+                                        </div>
+
+                                        <div class="col-sm-12">
+                                          <video
+                                            height="240"
+                                            controls
+                                            *ngIf="video != null"
+                                          >
+                                            <source
+                                              src="{{
+                                                imageURL
+                                              }}/uploads/users/{{ video }}"
+                                              type="video/mp4"
+                                            />
+                                          </video>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="tab-pane fade"
+              id="v-pills-tests"
+              role="tabpanel"
+              aria-labelledby="v-pills-tests-tab"
+              *ngIf="state == 'student'"
+              [hidden]="state != 'student'"
+            >
+              <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                  <div
+                    class="first col col-lg-12 col-md-12 col-sm-12 text-container container"
+                  >
+                    <div class="pb-5">
+                      <div class="row message-wrapper" *ngIf="!tests">
+                        <div class="col-lg-12 col-md-12 col-sm-12 text-center">
+                          <i class="icon-desktop"></i>
+                          <h4>{{ "No tests yet" | translate }}</h4>
+                        </div>
+                      </div>
+
+                      <div class="col-sm-12" *ngIf="!tests; length">
+                        <table class="table">
+                          <thead>
+                            <tr>
+                              <th scope="col">{{ "Id" | translate }}</th>
+                              <th scope="col">{{ "Test Name" | translate }}</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let s of tests">
+                              <td>{{ s.id }}</td>
+                              <td>
+                                {{ s.name }}
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="tab-pane fade"
+              id="v-pills-child"
+              role="tabpanel"
+              aria-labelledby="v-pills-child-tab "
+              *ngIf="state != 'student'"
+            >
+              <div class="row">
+                <div
+                  class="col-lg-12 col-md-12 col-sm-12 text-container container"
+                >
+                  <div class="col-lg-12 dir-text">
+                    <div class="form-group">
+                      <button
+                        type="submit"
+                        style="cursor: pointer"
+                        class="primary-btn fullWidth-mob mt-ladda-btn ladda-button"
+                        data-style="slide-right"
+                        (click)="parentModal.show()"
+                      >
+                        <span class="ladda-label">
+                          {{ "Add" | translate }}
+                        </span>
+                        <span class="ladda-spinner"></span
+                        ><span class="ladda-spinner"></span>
+                      </button>
+                    </div>
+                  </div>
+
+                  <div class="row message-wrapper" *ngIf="!children">
+                    <div class="col-lg-12 col-md-12 col-sm-12 text-center">
+                      <i class="icon-users-2"></i>
+                      <h4>
+                        {{ "No Childern Done" | translate }}
+                      </h4>
+                    </div>
+                  </div>
+
+                  <div class="pb-5" *ngIf="children">
+                    <div class="mt-3">
+                      <div class="tab-content">
+                        <div class="col-sm-12">
+                          <div
+                            class="panel panel-default panel-block"
+                            style="margin-top: 15px"
+                          >
+                            <div class="panel-body body-reserv">
+                              <div class="row">
+                                <div
+                                  class="col-lg-3 col-md-3 col-sm-3 img-thirapist"
+                                  *ngFor="let s of children"
+                                >
+                                  <img
+                                    *ngIf="s.image != null"
+                                    src="{{ imageURL }}/uploads/users/{{
+                                      s.image
+                                    }}"
+                                    class="card-circular"
+                                    (click)="getid(s.id)"
+                                  />
+                                  <img
+                                    *ngIf="s.image == null"
+                                    src="{{ ImageURl }}"
+                                    class="card-circular"
+                                    (click)="getid(s.id)"
+                                  />
+
+                                  <div>
+                                    <strong class="name-thirapist">
+                                      <span (click)="getid(s.id)">{{
+                                        s.name
+                                      }}</span>
+                                    </strong>
+                                  </div>
+
+                                  <br />
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <br />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="tab-pane fade"
+              id="v-pills-timeline"
+              role="tabpanel"
+              aria-labelledby="v-pills-timeline-tab"
+              *ngIf="state == 'trainer'"
+            >
+              <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                  <div
+                    class="first col col-lg-12 col-md-12 col-sm-12 text-container container"
+                  >
+                    <div class="pb-5">
+                      <div class="mt-3">
+                        <div class="tab-content">
+                          <div
+                            class="row message-wrapper"
+                            *ngIf="Timeline?.length === 0"
+                          >
+                            <div
+                              class="col-lg-12 col-md-12 col-sm-12 text-center"
+                            >
+                              <i class="icon-doc-text-inv-1"></i>
+                              <h4>{{ "No Appointments yet" | translate }}</h4>
+                            </div>
+                          </div>
+
+                          <div class="col-lg-12 dir-text">
+                            <div class="form-group">
+                              <button
+                                type="submit"
+                                style="cursor: pointer"
+                                class="primary-btn fullWidth-mob mt-ladda-btn ladda-button"
+                                data-style="slide-right"
+                                (click)="open1(content1)"
+                              >
+                                <span class="ladda-label">
+                                  {{ "Add Appointment" | translate }}
+                                </span>
+                                <span class="ladda-spinner"></span
+                                ><span class="ladda-spinner"></span>
+                              </button>
+                              <button
+                                type="submit"
+                                [disabled]="!enableDelete"
+                                style="cursor: pointer"
+                                class="primary-btn mt-1 fullWidth-mob mt-ladda-btn ladda-button"
+                                data-style="slide-right"
+                                (click)="deleteSelectedTimlines()"
+                              >
+                                <span class="ladda-label">
+                                  {{ "Delete" | translate }}
+                                </span>
+                                <span class="ladda-spinner"></span
+                                ><span class="ladda-spinner"></span>
+                              </button>
+                            </div>
+                          </div>
+                          <div class="col-sm-12">
+                            <table class="table">
+                              <thead>
+                                <tr>
+                                  <th scope="col">{{ "Date" | translate }}</th>
+                                  <th scope="col">{{ "Day" | translate }}</th>
+                                  <th scope="col">
+                                    {{ "time from" | translate }}
+                                  </th>
+                                  <th scope="col">
+                                    {{ "time to" | translate }}
+                                  </th>
+                                  <th scope="col">{{ "price" | translate }}</th>
+                                  <!-- <th scope="col"></th> -->
+                                  <th scope="col" colspan="2">
+                                    <span
+                                      style="cursor: pointer"
+                                      (click)="toggleSelectAll()"
+                                    >
+                                      {{
+                                        select === "Select All"
+                                          ? ("Select All" | translate)
+                                          : ("Un Select All" | translate)
+                                      }}
+                                    </span>
+                                  </th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr *ngFor="let s of sortData">
+                                  <td>{{ s.date }}</td>
+                                  <td>{{ s.day }}</td>
+                                  <td>{{ s.time_from }}</td>
+                                  <td>{{ s.time_to }}</td>
+                                  <td>{{ s.price }}</td>
+                                  <td>
+                                    <i
+                                      class="fa fa-edit"
+                                      style="cursor: pointer"
+                                      (click)="openModal1(template1, s.id)"
+                                    ></i>
+                                  </td>
+                                  <td>
+                                    <input
+                                      type="checkbox"
+                                      [checked]="isChecked"
+                                      [id]="s.id"
+                                      (change)="handleChange(s.id)"
+                                    />
+                                    <!-- <i
+                                      class="fa fa-trash"
+                                      style="cursor: pointer"
+                                      (click)="deletetimeline(s.id)"
+                                    ></i> -->
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="tab-pane fade"
+              id="v-pills-lang"
+              role="tabpanel"
+              aria-labelledby="v-pills-lang-tab"
+              *ngIf="state == 'trainer'"
+            >
+              <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                  <div
+                    class="first col col-lg-12 col-md-12 col-sm-12 text-container container"
+                  >
+                    <div class="pb-5">
+                      <div class="mt-3">
+                        <div class="tab-content">
+                          <div
+                            class="row message-wrapper"
+                            *ngIf="languages?.length === 0"
+                          >
+                            <div
+                              class="col-lg-12 col-md-12 col-sm-12 text-center"
+                            >
+                              <i class="fa fa-language"></i>
+                              <h4>{{ "No Languages yet" | translate }}</h4>
+                            </div>
+                          </div>
+
+                          <div class="col-lg-12 dir-text">
+                            <div class="form-group">
+                              <button
+                                type="submit"
+                                style="cursor: pointer"
+                                class="primary-btn fullWidth-mob mt-ladda-btn ladda-button"
+                                data-style="slide-right"
+                                (click)="openModal7(template7)"
+                              >
+                                <span class="ladda-label">
+                                  {{ "Add language" | translate }}
+                                </span>
+                                <span class="ladda-spinner"></span
+                                ><span class="ladda-spinner"></span>
+                              </button>
+                            </div>
+                          </div>
+
+                          <div class="col-sm-12">
+                            <ul
+                              class="list-group text-right"
+                              *ngFor="let s of languages"
+                            >
+                              <li class="list-group-item">
+                                <i
+                                  class="fa fa-trash deleteprofile"
+                                  style="cursor: pointer"
+                                  (click)="deletelang(s.id)"
+                                ></i>
+                                {{ s.name }}
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="tab-pane fade"
+              id="v-pills-Certif"
+              role="tabpanel"
+              aria-labelledby="v-pills-Certif-tab"
+              *ngIf="state == 'trainer'"
+            >
+              <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                  <div
+                    class="first col col-lg-12 col-md-12 col-sm-12 text-container container"
+                  >
+                    <div class="pb-5">
+                      <div class="mt-3">
+                        <div class="tab-content">
+                          <div
+                            class="row message-wrapper"
+                            *ngIf="certificate?.length === 0"
+                          >
+                            <div
+                              class="col-lg-12 col-md-12 col-sm-12 text-center"
+                            >
+                              <i class="fa fa-graduation-cap"></i>
+                              <h4>{{ "No Certification" | translate }}</h4>
+                            </div>
+                          </div>
+
+                          <div class="col-lg-12 dir-text">
+                            <div class="form-group">
+                              <button
+                                type="submit"
+                                style="cursor: pointer"
+                                class="primary-btn fullWidth-mob mt-ladda-btn ladda-button"
+                                data-style="slide-right"
+                                (click)="openModal9(template9)"
+                                data-toggle="modal"
+                                data-target="#exampleModal4"
+                              >
+                                <span class="ladda-label">
+                                  {{ "Add Certification" | translate }}
+                                </span>
+                                <span class="ladda-spinner"></span
+                                ><span class="ladda-spinner"></span>
+                              </button>
+                            </div>
+                          </div>
+                          <div class="col-sm-12">
+                            <table class="table">
+                              <thead>
+                                <tr>
+                                  <th scope="col">{{ "Name" | translate }}</th>
+                                  <th scope="col">
+                                    {{ "From Institution" | translate }}
+                                  </th>
+                                  <th scope="col"></th>
+                                  <th scope="col"></th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr *ngFor="let s of certificate">
+                                  <td>{{ s.name }}</td>
+                                  <td>{{ s.from_institution }}</td>
+                                  <td>
+                                    <i
+                                      class="fa fa-edit"
+                                      style="cursor: pointer"
+                                      (click)="openModal2(template2, s.id)"
+                                    ></i>
+                                  </td>
+                                  <td>
+                                    <i
+                                      class="fa fa-trash"
+                                      style="cursor: pointer"
+                                      (click)="deletecertificate(s.id)"
+                                    ></i>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="tab-pane fade"
+              id="v-pills-spacial"
+              role="tabpanel"
+              aria-labelledby="v-pills-spacial-tab"
+              *ngIf="state == 'trainer'"
+            >
+              <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                  <div
+                    class="first col col-lg-12 col-md-12 col-sm-12 text-container container"
+                  >
+                    <div class="pb-5">
+                      <div class="mt-3">
+                        <div class="tab-content">
+                          <div
+                            class="row message-wrapper"
+                            *ngIf="specialists?.length === 0"
+                          >
+                            <div
+                              class="col-lg-12 col-md-12 col-sm-12 text-center"
+                            >
+                              <i class="fa fa-folder"></i>
+                              <h4>{{ "No specialists yet" | translate }}</h4>
+                            </div>
+                          </div>
+
+                          <div class="col-lg-12 dir-text">
+                            <div class="form-group">
+                              <button
+                                type="submit"
+                                style="cursor: pointer"
+                                class="primary-btn fullWidth-mob mt-ladda-btn ladda-button"
+                                data-style="slide-right"
+                                (click)="openModal8(template8)"
+                              >
+                                <span class="ladda-label">
+                                  {{ "Add specialist" | translate }}
+                                </span>
+                                <span class="ladda-spinner"></span
+                                ><span class="ladda-spinner"></span>
+                              </button>
+                            </div>
+                          </div>
+
+                          <div class="col-sm-12">
+                            <ul
+                              class="list-group"
+                              *ngFor="let s of specialists"
+                            >
+                              <li class="list-group-item">
+                                <i
+                                  class="fa fa-trash deleteprofile"
+                                  style="cursor: pointer"
+                                  (click)="deletespacial(s.id)"
+                                ></i>
+                                {{ s.name }}
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="tab-pane fade"
+              id="v-pills-classes"
+              role="tabpanel"
+              aria-labelledby="v-pills-classes-tab"
+              *ngIf="state == 'trainer'"
+            >
+              <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                  <div
+                    class="first col col-lg-12 col-md-12 col-sm-12 text-container container"
+                  >
+                    <div class="pb-5 pt-5">
+                      <div class="row message-wrapper" *ngIf="!myclasses">
+                        <div class="col-lg-12 col-md-12 col-sm-12 text-center">
+                          <i class="icon-home-1"></i>
+                          <h4>{{ "No classes yet" | translate }}</h4>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div
+                          class="col-md-4 col-sm-12"
+                          *ngFor="let s of myclasses"
+                        >
+                          <div class="media">
+                            <div class="media-body">
+                              <h5 class="mt-0">{{ s.id }}.{{ s.name }}</h5>
+
+                              <div
+                                class="media mt-3"
+                                *ngFor="let ss of s.classes"
+                              >
+                                <a class="mr-3" href="#"> </a>
+                                <div
+                                  class="media-body"
+                                  (click)="showsoneClass(ss.id)"
+                                >
+                                  <button
+                                    class="btn btn-class"
+                                    (click)="parentModal1.show()"
+                                  >
+                                    *{{ ss.name }}
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="tab-pane fade"
+              id="v-pills-commonReports"
+              role="tabpanel"
+              aria-labelledby="v-pills-commonReports-tab"
+              *ngIf="state == 'trainer'"
+            >
+              <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                  <div
+                    class="first col col-lg-12 col-md-12 col-sm-12 text-container container"
+                  >
+                    <div class="pb-5">
+                      <ul class="nav nav-tabs">
+                        <li class=" ">
+                          <a
+                            class="upcomingTrips-btn show active"
+                            data-toggle="tab"
+                            href="#my_shared_reports"
+                            >{{ "my shared reports" | translate }}
+                          </a>
+                        </li>
+                        <li>
+                          <a data-toggle="tab" href="#shared_student_result"
+                            >{{ "shared student result" | translate }}
+                          </a>
+                        </li>
+
+                        <li>
+                          <a data-toggle="tab" href="#shared_class_result"
+                            >{{ "shared class result" | translate }}
+                          </a>
+                        </li>
+                      </ul>
+
+                      <div class="mt-3">
+                        <div class="tab-content">
+                          <div
+                            id="my_shared_reports"
+                            class="tab-pane fade in active show"
+                          >
+                            <div
+                              class="row message-wrapper"
+                              *ngIf="shared_reports?.length === 0"
+                            >
+                              <div
+                                class="col-lg-12 col-md-12 col-sm-12 text-center"
+                              >
+                                <i class="icon-layers"></i>
+                                <h4>
+                                  {{ "No shared reports yet" | translate }}
+                                </h4>
+                              </div>
+                            </div>
+
+                            <div class="col-sm-12" *ngIf="shared_reports">
+                              <table class="table">
+                                <thead>
+                                  <tr>
+                                    <th scope="col">
+                                      {{ "Report ID" | translate }}
+                                    </th>
+                                    <th scope="col">
+                                      {{ "Report Name" | translate }}
+                                    </th>
+                                    <th scope="col">
+                                      {{ "Name" | translate }}
+                                    </th>
+                                    <th scope="col">
+                                      {{ "Date" | translate }}
+                                    </th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr *ngFor="let s of shared_reports">
+                                    <td>{{ s.report_id }}</td>
+                                    <td>
+                                      {{ s.report_name }}
+                                    </td>
+                                    <td>
+                                      {{ s.first_name }}
+                                    </td>
+                                    <td>
+                                      {{ s.app_date }}
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                          <div id="shared_student_result" class="tab-pane fade">
+                            <div
+                              class="row message-wrapper"
+                              *ngIf="student_result?.length === 0"
+                            >
+                              <div
+                                class="col-lg-12 col-md-12 col-sm-12 text-center"
+                              >
+                                <i class="icon-layers"></i>
+                                <h4>
+                                  {{
+                                    "No shared student result yet" | translate
+                                  }}
+                                </h4>
+                              </div>
+                            </div>
+
+                            <div class="col-sm-12" *ngIf="student_result">
+                              <table class="table">
+                                <thead>
+                                  <tr>
+                                    <th scope="col">
+                                      {{ "Student Id" | translate }}
+                                    </th>
+                                    <th scope="col">
+                                      {{ "Student Name" | translate }}
+                                    </th>
+                                    <th scope="col">
+                                      {{ "month" | translate }}
+                                    </th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr *ngFor="let s of student_result">
+                                    <td>{{ s.student_id }}</td>
+                                    <td>
+                                      {{ s.student_name }}
+                                    </td>
+                                    <td>
+                                      {{ s.month }}
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+
+                          <div id="shared_class_result" class="tab-pane fade">
+                            <div
+                              class="row message-wrapper"
+                              *ngIf="class_result?.length === 0"
+                            >
+                              <div
+                                class="col-lg-12 col-md-12 col-sm-12 text-center"
+                              >
+                                <i class="icon-layers"></i>
+                                <h4>
+                                  {{ "No shared class result yet" | translate }}
+                                </h4>
+                              </div>
+                            </div>
+
+                            <div class="col-sm-12" *ngIf="class_result">
+                              <table class="table">
+                                <thead>
+                                  <tr>
+                                    <th scope="col">
+                                      {{ "Class Id" | translate }}
+                                    </th>
+                                    <th scope="col">
+                                      {{ "class Name" | translate }}
+                                    </th>
+                                    <th scope="col">
+                                      {{ "month" | translate }}
+                                    </th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr *ngFor="let s of class_result">
+                                    <td>{{ s.class_id }}</td>
+                                    <td>
+                                      {{ s.class_name }}
+                                    </td>
+                                    <td>
+                                      {{ s.month }}
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<ng-template #content1 let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">
+      {{ "Add Appointment" | translate }}
+    </h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="modal-body popupprofile">
+    <form
+      #form="ngForm"
+      (ngSubmit)="submitForm3(date, time_from, time_to, price)"
+    >
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="form-group">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <label>{{ "Date" | translate }}</label>
+              <input type="date" class="form-control" name="date" #date />
+            </div>
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <label>{{ "time from" | translate }}</label>
+              <input
+                type="time"
+                class="form-control"
+                name="time_from"
+                #time_from
+              />
+            </div>
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <label>{{ "time to" | translate }}</label>
+              <input type="time" class="form-control" name="time_to" #time_to />
+            </div>
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <label>{{ "price" | translate }}</label>
+              <input
+                type="number"
+                class="form-control"
+                placeholder="{{ 'price' | translate }} "
+                name="price"
+                #price
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary">
+          {{ "Save" | translate }}
+        </button>
+      </div>
+    </form>
+  </div>
+</ng-template>
+<ng-template #template1>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">
+      {{ "Update Appointment" | translate }}
+    </h4>
+    <button
+      type="button"
+      class="close pull-right"
+      aria-label="Close"
+      (click)="modalRef.hide()"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body popupprofile">
+    <form #form="ngForm" (ngSubmit)="submitForm4(time_from, time_to, price)">
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="form-group">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <label>{{ "time from" | translate }}</label>
+              <input
+                type="time"
+                class="form-control"
+                name="time_from"
+                #time_from
+                value="{{ timelinedata?.time_from }}"
+              />
+            </div>
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <label>{{ "time to" | translate }}</label>
+              <input
+                type="time"
+                class="form-control"
+                name="time_to"
+                #time_to
+                value="{{ timelinedata?.time_to }}"
+              />
+            </div>
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <label>{{ "price" | translate }}</label>
+              <input
+                type="number"
+                class="form-control"
+                name="price"
+                #price
+                value="{{ timelinedata?.price }}"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary">
+          {{ "Save" | translate }}
+        </button>
+      </div>
+    </form>
+  </div>
+</ng-template>
+
+<ng-template #template7>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">{{ "Add language" | translate }}</h4>
+    <button
+      type="button"
+      class="close pull-right"
+      aria-label="Close"
+      (click)="modalRef7.hide()"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body popupprofile">
+    <form #form="ngForm" (ngSubmit)="submitForm5(language_id)">
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="form-group">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <label>{{ "language" | translate }}</label>
+              <select name="language_id" #language_id class="form-control">
+                <option value="{{ s.id }}" *ngFor="let s of showlangs">
+                  {{ s.name }}
+                </option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary">
+          {{ "Save" | translate }}
+        </button>
+      </div>
+    </form>
+  </div>
+</ng-template>
+<ng-template #template9>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">{{ "Add Certification" | translate }}</h4>
+    <button
+      type="button"
+      class="close pull-right"
+      aria-label="Close"
+      (click)="modalRef9.hide()"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="modal-body popupprofile">
+    <form #form="ngForm" (ngSubmit)="submitForm6(name, from_institution)">
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="form-group">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <label>{{ "Name" | translate }} </label>
+              <input type="text" class="form-control" name="name" #name />
+            </div>
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <label>{{ "From Institution" | translate }}</label>
+              <input
+                type="text"
+                class="form-control"
+                name="from_institution"
+                #from_institution
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary">
+          {{ "Save" | translate }}
+        </button>
+      </div>
+    </form>
+  </div>
+</ng-template>
+
+<ng-template #template2>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">
+      {{ "update certificate" | translate }}
+    </h4>
+    <button
+      type="button"
+      class="close pull-right"
+      aria-label="Close"
+      (click)="modalRef78.hide()"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body popupprofile">
+    <form #form="ngForm" (ngSubmit)="submitForm7(name, from_institution)">
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="form-group">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <label>{{ "Name" | translate }}</label>
+              <input
+                type="text"
+                class="form-control"
+                name="name"
+                #name
+                value="{{ cerdata?.name }}"
+              />
+            </div>
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <label>{{ "From Institution" | translate }}</label>
+              <input
+                type="text"
+                class="form-control"
+                name="from_institution"
+                #from_institution
+                value="{{ cerdata?.from_institution }}"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary">
+          {{ "Save" | translate }}
+        </button>
+      </div>
+    </form>
+  </div>
+</ng-template>
+
+<ng-template #template8>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">{{ "Add Spacialist" | translate }}</h4>
+    <button
+      type="button"
+      class="close pull-right"
+      aria-label="Close"
+      (click)="modalRef8.hide()"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="modal-body popupprofile">
+    <form #form="ngForm" (ngSubmit)="submitForm8(specialist_id)">
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="form-group">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <label>{{ "Spacialist" | translate }}</label>
+              <select name="specialist_id" #specialist_id class="form-control">
+                <option style="display: none"></option>
+                <option value="{{ s.id }}" *ngFor="let s of allspecial">
+                  {{ s.name }}
+                </option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary">
+          {{ "Save" | translate }}
+        </button>
+      </div>
+    </form>
+  </div>
+</ng-template>
+
+<!-- <div class="modal fade" id="exampleModal7" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add video</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body popupprofile">
+            <form #form="ngForm" (ngSubmit)="submitVideo()">
+                <div class="row">
+                <div class="col-md-6 offset-3 pl-1">
+
+                    <div id="preview">
+                   
+                        <label for="pattern">Choose Image</label>
+                        <input  accept="image/*" type="file" (change)="handlefileInput($event.target.files)"  id="pattern"/>
+                        
+                      </div>
+
+              
+                   
+                  
+                    </div>  
+                    
+               
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Save </button>
+                  </div>
+            </form>
+          
+
+       
+        </div>
+       
+      </div>
+    </div>
+  </div> -->
+
+<ng-template #template3>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">{{ "upload Video" | translate }}</h4>
+    <button
+      type="button"
+      class="close pull-right"
+      aria-label="Close"
+      (click)="modalRef.hide()"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body popupprofile">
+    <form #form="ngForm" (ngSubmit)="SUbmitVIdeo()">
+      <div class="row">
+        <div class="col-md-12 chooseimg">
+          <label for="pattern">{{ "Choose video" | translate }}</label>
+
+          <input
+            accept="file/*"
+            type="file"
+            (change)="handlefileInput($event.target.files)"
+          />
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary">
+          {{ "Save" | translate }}
+        </button>
+      </div>
+    </form>
+  </div>
+</ng-template>
+
+<div
+  class="modal fade"
+  bsModal
+  #parentModal1="bs-modal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="dialog-nested-name1"
+>
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="dialog-nested-name1" class="modal-title pull-left">
+          {{ "My teachers and students" | translate }}
+        </h4>
+        <button
+          type="button"
+          class="close pull-right"
+          aria-label="Close"
+          (click)="parentModal1.hide()"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="container popupprofile" style="padding: 20px">
+        <div class="row">
+          <div class="col-md-6 popupprofile">
+            <h3 style="color: #82004a">{{ "teachers" | translate }}</h3>
+            <ul
+              class="teachers"
+              *ngFor="let s of teachers"
+              style="padding-right: 20px; padding-left: 20px"
+            >
+              <li>{{ s.first_name }}</li>
+            </ul>
+          </div>
+          <div class="col-md-6">
+            <h3 style="color: #82004a">{{ "Students" | translate }}</h3>
+            <ul class="teachers" *ngFor="let s of students">
+              <li (click)="showonestudent(s.id)">
+                <a (click)="childModal.show()" style="cursor: pointer">{{
+                  s.first_name
+                }}</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  class="modal fade"
+  bsModal
+  #childModal="bs-modal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="dialog-nested-name2"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="dialog-nested-name2" class="modal-title pull-left">
+          {{ "the student" | translate }}
+        </h4>
+        <button
+          type="button"
+          class="close pull-right"
+          aria-label="Close"
+          (click)="childModal.hide()"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body popupprofile">
+        <div class="container" style="padding: 20px">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card-details-wrapper" *ngFor="let s of onestudents">
+                <div class="profile-userpic">
+                  <img
+                    *ngIf="s.image != null"
+                    src="{{ imageURL }}/uploads/users/{{ s.image }}"
+                    class="img-responsive"
+                  />
+                  <img
+                    *ngIf="s.image == null"
+                    src="{{ ImageURl }}"
+                    class="img-responsive"
+                  />
+                </div>
+                <div class="profile-usertitle">
+                  <div class="profile-usertitle-name">
+                    <span>{{ s.first_name }} {{ s.last_name }}</span>
+                  </div>
+                  <div class="user-mail">
+                    <span>{{ s.rate_myself }}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">{{ "steps" | translate }}</h4>
+    <button
+      type="button"
+      class="close pull-right"
+      aria-label="Close"
+      (click)="modalRef.hide()"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body vodcash">
+    <p>
+      <b>
+        {{
+          "You have chosen Vodafone Cash to pay the session price, and your request is currently on hold. Please follow the following steps to confirm payment and reservation:"
+            | translate
+        }}</b
+      >
+    </p>
+    <ul class="vodafone">
+      <li>
+        {{
+          "Transfer the session value shown in front of you in the form to the following number 010 ****."
+            | translate
+        }}
+      </li>
+      <li>
+        {{
+          " Photocopy the payment receipt or transfer letter from the phone and send it to the chat customer service"
+            | translate
+        }}
+      </li>
+      <li>
+        {{
+          "Send the name of the trainer and the date of the session with a copy of the receipt or message"
+            | translate
+        }}
+      </li>
+      <li>
+        {{
+          "Wait for customer service response to confirm your reservation"
+            | translate
+        }}
+      </li>
+    </ul>
+  </div>
+</ng-template>
+
+<div
+  class="modal fade"
+  bsModal
+  #parentModal="bs-modal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="dialog-nested-name1"
+>
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4
+          id="dialog-nested-name1"
+          class="modal-title pull-left"
+          style="color: #82004a"
+        >
+          {{ "Choose one way to add child" | translate }}
+        </h4>
+        <button
+          type="button"
+          class="close pull-right"
+          aria-label="Close"
+          (click)="parentModal.hide()"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <button
+          type="button"
+          class="btn btn-test"
+          (click)="openModal4(template4)"
+          style="width: 100%; margin-bottom: 10px"
+        >
+          {{ "child already exists" | translate }}
+        </button>
+        <button
+          type="button"
+          class="btn btn-test"
+          (click)="openModal5(template5)"
+          style="width: 100%"
+        >
+          {{ "new child" | translate }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #template4>
+  <div class="modal-header">
+    <h4 id="dialog-nested-name2" class="modal-title pull-left">
+      {{ "Add child" | translate }}
+    </h4>
+    <button
+      type="button"
+      class="close pull-right"
+      aria-label="Close"
+      (click)="modalRef1.hide()"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form #form="ngForm" (ngSubmit)="submitForm9(child_id)">
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="form-group">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 chooseechild">
+              <label>{{ "Choose child" | translate }}</label>
+              <select name="child_id" #child_id class="form-control">
+                <option style="display: none">
+                  {{ "Choose child" | translate }}
+                </option>
+
+                <option value="{{ s.id }}" *ngFor="let s of childrens">
+                  {{ s.name }} {{ s.last_name }}
+                </option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary">
+          {{ "Save" | translate }}
+        </button>
+      </div>
+    </form>
+  </div>
+</ng-template>
+
+<ng-template #template5>
+  <div class="modal-header">
+    <h4 id="dialog-nested-name2" class="modal-title pull-left">
+      {{ "Add child" | translate }}
+    </h4>
+    <button
+      type="button"
+      class="close pull-right"
+      aria-label="Close"
+      (click)="modalRef2.hide()"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body popupprofile">
+    <form [formGroup]="newchild" (ngSubmit)="submitaddchild(newchild)">
+      <div class="box_form">
+        <div class="form-group">
+          <label>{{ "Name" | translate }}</label>
+          <input
+            name="first_name"
+            type="text"
+            class="form-control"
+            formControlName="first_name"
+            (keyup)="checkfirst_name1($event)"
+            [ngClass]="{
+              'is-invalid': typeingfirst_name1 && ff.first_name.errors
+            }"
+          />
+          <div
+            *ngIf="
+              newchild.controls.first_name.invalid &&
+              newchild.controls.first_name.touched &&
+              newchild.controls.first_name.dirty
+            "
+            style="color: red; margin: 0px 17px"
+          >
+            <span *ngIf="newchild.controls.first_name.errors.required">{{
+              "required" | translate
+            }}</span>
+            <span *ngIf="newchild.controls.first_name.errors.pattern">{{
+              "letters only" | translate
+            }}</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>{{ "Username" | translate }} </label>
+          <input
+            name="user_name"
+            type="text"
+            class="form-control"
+            formControlName="user_name"
+            [ngClass]="{
+              'is-invalid': ff.user_name.errors
+            }"
+          />
+          <div
+            *ngIf="
+              newchild.controls.user_name.invalid &&
+              newchild.controls.user_name.touched &&
+              newchild.controls.user_name.dirty
+            "
+            style="color: red; margin: 0px 17px"
+          >
+            <span *ngIf="newchild.controls.user_name.errors.required">{{
+              "required" | translate
+            }}</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>{{ "Email" | translate }}</label>
+          <input
+            name="email"
+            type="email"
+            class="form-control"
+            formControlName="email"
+            (keyup)="checkemail1($event)"
+            [ngClass]="{ 'is-invalid': typeingemail1 && ff.email.errors }"
+          />
+          <div
+            *ngIf="
+              newchild.controls.email.invalid &&
+              newchild.controls.email.touched &&
+              newchild.controls.email.dirty
+            "
+            style="color: red; margin: 0px 17px"
+          >
+            <span *ngIf="newchild.controls.email.errors.required">{{
+              "required" | translate
+            }}</span>
+            <span *ngIf="newchild.controls.email.errors.pattern">{{
+              "please enter valid email" | translate
+            }}</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>{{ "Password" | translate }}</label>
+          <input
+            [type]="fieldTextType1 ? 'text' : 'password'"
+            class="form-control"
+            name="passwords"
+            formControlName="passwords"
+            (keyup)="checkpassword1($event)"
+            [ngClass]="{
+              'is-invalid': typeingpasswords1 && ff.passwords.errors
+            }"
+          />
+          <div class="input-group-append">
+            <span class="input-group-text">
+              <i
+                class="fa"
+                [ngClass]="{
+                  'fa-eye-slash': !fieldTextType1,
+                  'fa-eye': fieldTextType1
+                }"
+                (click)="toggleFieldTextType1()"
+              ></i>
+            </span>
+          </div>
+          <div
+            *ngIf="
+              newchild.controls.passwords.invalid &&
+              newchild.controls.passwords.touched &&
+              newchild.controls.passwords.dirty
+            "
+            style="color: red; margin: 0px 17px"
+          >
+            <span *ngIf="newchild.controls.passwords.errors.required">{{
+              "required" | translate
+            }}</span>
+            <span *ngIf="newchild.controls.passwords.errors.pattern">{{
+              "you must enter 10 digit & at least one capital character"
+                | translate
+            }}</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>{{ "Confirm password" | translate }}</label>
+          <input
+            [type]="fieldTextType2 ? 'text' : 'password'"
+            class="form-control"
+            name="conpassword"
+            formControlName="conpassword"
+            [ngClass]="{
+              'is-invalid': ff.conpassword.errors
+            }"
+          />
+          <div class="input-group-append">
+            <span class="input-group-text">
+              <i
+                class="fa"
+                [ngClass]="{
+                  'fa-eye-slash': !fieldTextType2,
+                  'fa-eye': fieldTextType2
+                }"
+                (click)="toggleFieldTextType2()"
+              ></i>
+            </span>
+          </div>
+          <div
+            *ngIf="
+              newchild.controls.conpassword.invalid &&
+              newchild.controls.conpassword.touched &&
+              newchild.controls.conpassword.dirty
+            "
+            style="color: red; margin: 0px 17px"
+          >
+            <span *ngIf="newchild.controls.conpassword.errors.required">{{
+              "required" | translate
+            }}</span>
+          </div>
+        </div>
+        <div id="pass-info" class="clearfix"></div>
+
+        <div class="form-group text-center add_top_30">
+          <input
+            class="btn_1"
+            type="submit"
+            value="{{ 'Submit' | translate }}"
+          />
+        </div>
+      </div>
+    </form>
+  </div>
+</ng-template>
+
+<ng-template #content23 let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">
+      {{ "Add Report" | translate }}
+    </h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="modal-body popupprofile">
+    <form #form="ngForm" (ngSubmit)="submitForm23(content)">
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="form-group">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <label>{{ "Upload File" | translate }}</label>
+              <br />
+
+              <input
+                class="form-control"
+                accept="*"
+                type="file"
+                (change)="uploadfile($event.target.files)"
+                id="pattern"
+              />
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <label>{{ "content" | translate }}</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="{{ 'content' | translate }} "
+                name="content"
+                #content
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary">
+          {{ "Save" | translate }}
+        </button>
+      </div>
+    </form>
+  </div>
+</ng-template>
+<div id="page-preloader" *ngIf="showSpinner">
+  <div id="spinner-three">
+    <div id="inner"></div>
+    <div id="outer"></div>
+  </div>
+</div>

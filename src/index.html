@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>RAFiiQ</title>
+
+    <base href="/" />
+    <link rel="icon" type="image/x-icon" href="favicon.png" />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta
+      name="description"
+      content="Find easily a doctor and book online an appointment"
+    />
+    <meta name="author" content="Ansonika" />
+
+    <link
+      rel="manifest"
+      crossorigin="use-credentials"
+      href="./assets/manifest.json"
+    />
+
+    <!-- GOOGLE WEB FONT -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800"
+      rel="stylesheet"
+    />
+
+    <!-- BASE CSS -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="assets/css/style.css" rel="stylesheet" />
+    <link href="assets/css/menu.css" rel="stylesheet" />
+    <link href="assets/css/vendors.css" rel="stylesheet" />
+    <link href="assets/css/icon_fonts/css/all_icons_min.css" rel="stylesheet" />
+
+    <!-- REVOLUTION STYLE SHEETS -->
+    <link href="assets/rev-slider-files/css/settings.css" rel="stylesheet" />
+
+    <!-- YOUR CUSTOM CSS -->
+    <link href="assets/css/custom.css" rel="stylesheet" />
+    <!-- SPECIFIC CSS -->
+    <link href="assets/css/blog.css" rel="stylesheet" *ngIf="direction=ltr" />
+
+    <link href="assets/css/tables.css" rel="stylesheet" />
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+  </head>
+
+  <body id="body">
+    <app-root></app-root>
+    <!-- Start of  Zendesk Widget script -->
+
+    <script
+      id="ze-snippet"
+      src="  https://static.zdassets.com/ekr/snippet.js?key=14a1f042-5cbe-4a43-9846-17e0d845e7fe"
+    ></script>
+    <!-- End of  Zendesk Widget script -->
+    <script src="assets/js/jquery-2.2.4.min.js"></script>
+    <script src="assets/js/common_scripts.min.js"></script>
+    <script src="assets/js/functions.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
+    <!-- REVOLUTION SLIDER SCRIPTS -->
+    <script
+      type="text/javascript"
+      src="assets/rev-slider-files/js/jquery.themepunch.tools.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="assets/rev-slider-files/js/jquery.themepunch.revolution.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="assets/rev-slider-files/js/extensions/revolution.extension.actions.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="assets/rev-slider-files/js/extensions/revolution.extension.carousel.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="assets/rev-slider-files/js/extensions/revolution.extension.kenburn.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="assets/rev-slider-files/js/extensions/revolution.extension.layeranimation.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="assets/rev-slider-files/js/extensions/revolution.extension.migration.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="assets/rev-slider-files/js/extensions/revolution.extension.navigation.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="assets/rev-slider-files/js/extensions/revolution.extension.parallax.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="assets/rev-slider-files/js/extensions/revolution.extension.slideanims.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="assets/rev-slider-files/js/extensions/revolution.extension.video.min.js"
+    ></script>
+
+    <!-- Modernizr -->
+    <script src="assets/js/modernizr_tables.js"></script>
+    <script type="text/javascript">
+      var tpj = jQuery;
+      var revapi72;
+      tpj(document).ready(function () {
+        if (tpj("#rev_slider_72_1").revolution == undefined) {
+          revslider_showDoubleJqueryError("#rev_slider_72_1");
+        } else {
+          revapi72 = tpj("#rev_slider_72_1")
+            .show()
+            .revolution({
+              sliderType: "standard",
+              jsFileLocation: "rev-slider-files/js/",
+              sliderLayout: "auto",
+              dottedOverlay: "none",
+              delay: 9000,
+              navigation: {
+                keyboardNavigation: "off",
+                keyboard_direction: "horizontal",
+                mouseScrollNavigation: "off",
+                mouseScrollReverse: "default",
+                onHoverStop: "off",
+                touch: {
+                  touchenabled: "on",
+                  touchOnDesktop: "off",
+                  swipe_threshold: 75,
+                  swipe_min_touches: 1,
+                  swipe_direction: "horizontal",
+                  drag_block_vertical: false,
+                },
+                arrows: {
+                  style: "gyges",
+                  enable: true,
+                  hide_onmobile: true,
+                  hide_under: 560,
+                  hide_onleave: true,
+                  hide_delay: 200,
+                  hide_delay_mobile: 1200,
+                  tmp: "",
+                  left: {
+                    h_align: "left",
+                    v_align: "center",
+                    h_offset: 20,
+                    v_offset: 0,
+                  },
+                  right: {
+                    h_align: "right",
+                    v_align: "center",
+                    h_offset: 20,
+                    v_offset: 0,
+                  },
+                },
+              },
+              visibilityLevels: [1240, 1024, 778, 480],
+              gridwidth: 1240,
+              gridheight: 600,
+              lazyType: "none",
+              shadow: 0,
+              spinner: "spinner0",
+              stopLoop: "off",
+              stopAfterLoops: -1,
+              stopAtSlide: -1,
+              shuffle: "off",
+              autoHeight: "off",
+              disableProgressBar: "on",
+              hideThumbsOnMobile: "off",
+              hideSliderAtLimit: 0,
+              hideCaptionAtLimit: 0,
+              hideAllCaptionAtLilmit: 0,
+              debugMode: false,
+              fallbacks: {
+                simplifyAll: "off",
+                nextSlideOnWindowFocus: "off",
+                disableFocusListener: false,
+              },
+            });
+        }
+      }); /*ready*/
+    </script>
+  </body>
+</html>

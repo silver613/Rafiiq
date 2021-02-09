@@ -1,0 +1,310 @@
+<main class="margin_60_35">
+  <div id="breadcrumb">
+    <div class="container">
+      <ul>
+        <li>
+          <a>{{ "Trainer page" | translate }}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- /breadcrumb -->
+
+  <div class="container margin_60">
+    <div class="row">
+      <aside class="col-xl-4 col-lg-4" id="sidebar">
+        <div class="box_profile">
+          <figure *ngIf="docDESC?.image != null">
+            <img
+              src="{{ imageURL }}/uploads/users/{{ docDESC?.image }}"
+              alt=""
+              class="img-fluid"
+            />
+          </figure>
+
+          <figure *ngIf="docDESC?.image == null">
+            <img src="./assets/img/default.png" alt="" class="img-fluid" />
+          </figure>
+
+          <h1>
+            {{ docDESC?.appreviation }} {{ docDESC?.first_name }}
+            {{ docDESC?.last_name }}
+          </h1>
+          <span style="font-size: large; color: #ffc107">
+            <rating [(ngModel)]="ay7aga" class="rating"></rating
+            ><small *ngIf="docDESC?.rate != null">({{ docDESC?.rate }})</small>
+          </span>
+
+          <ul class="statistic">
+            <li style="margin-right: 5px; margin-left: 5px">
+              {{ docDESC?.views_number }} {{ "Views" | translate }}
+            </li>
+            <li>{{ docDESC?.patient_count }} {{ "Patients" | translate }}</li>
+          </ul>
+          <ul class="contacts">
+            <div class="about-wrapper">
+              <label
+                ><strong
+                  ><i class="icon-phone"></i> {{ "Phone:" | translate }}
+                </strong></label
+              >
+              <span>{{ docDESC?.phone }}</span>
+            </div>
+            <div class="about-wrapper">
+              <label
+                ><strong
+                  ><i class="icon-flag"></i>
+                  {{ "Country of Residence :" | translate }}
+                </strong></label
+              >
+              <span>{{ docDESC?.country_name }}</span>
+            </div>
+          </ul>
+        </div>
+      </aside>
+      <!-- /asdide -->
+
+      <div class="col-xl-8 col-lg-8">
+        <div class="tabs_styled_2">
+          <ul class="nav nav-tabs" role="tablist">
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                id="book-tab"
+                data-toggle="tab"
+                href="#book"
+                role="tab"
+                aria-controls="book"
+                >{{ "Book an appointment" | translate }}</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                id="general-tab"
+                data-toggle="tab"
+                href="#general"
+                role="tab"
+                aria-controls="general"
+                aria-expanded="true"
+                >{{ "General info" | translate }}</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                id="reviews-tab"
+                data-toggle="tab"
+                href="#reviews"
+                role="tab"
+                aria-controls="reviews"
+                >{{ "Reviews" | translate }}</a
+              >
+            </li>
+          </ul>
+          <!--/nav-tabs -->
+
+          <div class="tab-content">
+            <div
+              class="tab-pane fade show active"
+              id="book"
+              role="tabpanel"
+              aria-labelledby="book-tab"
+            >
+              <div class="row">
+                <div class="col-lg-12 text-center">
+                  <div class="fees text-center" *ngFor="let s of docSERV">
+                    <div class="">{{ s.duration }} {{ s.time_name }}</div>
+                    <label class="service-header">
+                      <span class=" ">
+                        {{ s.price }} {{ "EGP" | translate }}
+                      </span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <form>
+                <div class="box_general_2 add_bottom_45">
+                  <div class="main_title_4">
+                    <h3>{{ "Select your date and time" | translate }}</h3>
+                  </div>
+
+                  <div class="row add_bottom_45">
+                    <div class="col-lg-3"></div>
+                    <div class="col-lg-6">
+                      <ngb-datepicker
+                        (dateSelect)="onDateSelection($event)"
+                        dir="ltr"
+                      ></ngb-datepicker>
+                    </div>
+                    <div class="col-lg-3"></div>
+                    <br />
+                    <br />
+                    <div class="col-lg-12 col-md-12">
+                      <div class="card" style="margin-top: 20px">
+                        <div
+                          class="card-body text-center noresr"
+                          *ngIf="timeline == null"
+                          style="display: none"
+                        >
+                          {{ "no reservation in this day" | translate }}
+                        </div>
+                        <div
+                          class="card-body box-time"
+                          *ngIf="timeline != null && date != null"
+                        >
+                          <div class="duration-title" *ngFor="let s of date">
+                            <label
+                              ><b
+                                >{{ s.day }},{{ s.day_num }} {{ s.month }}
+                                {{ s.year }}
+                              </b>
+                            </label>
+                          </div>
+                          <div class="times-booking" *ngFor="let s of timeline">
+                            <label>
+                              <i class="icon-clock"></i
+                              ><b> {{ s.time_from }} - {{ s.time_to }} </b>
+                            </label>
+                            <span class="duration-title">
+                              ({{ s.price }} EGY)</span
+                            >
+                            <button
+                              class="btn btn-primary bookbtn"
+                              *ngIf="s.state == 'احجز_الان'"
+                              [routerLink]="['/BookingPage', s.id]"
+                            >
+                              {{ "book now" | translate }}
+                            </button>
+                            <button
+                              class="btn btn-danger bookbtn"
+                              *ngIf="s.state == 'محجوز'"
+                              disabled
+                            >
+                              {{ "booked" | translate }}
+                            </button>
+
+                            <hr />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- /row -->
+                </div>
+
+                <!-- /row -->
+              </form>
+            </div>
+            <!-- /tab_1 -->
+
+            <div
+              class="tab-pane fade"
+              id="general"
+              role="tabpanel"
+              aria-labelledby="general-tab"
+            >
+              <div class="indent_title_in" *ngIf="docDESC?.profile != null">
+                <i class="pe-7s-user"></i>
+                <h3>{{ "Professional statement" | translate }}</h3>
+              </div>
+              <div class="wrapper_indent" *ngIf="docDESC?.profile != null">
+                <p>{{ docDESC?.profile }}</p>
+                <hr />
+              </div>
+              <!-- /wrapper indent -->
+
+              <div class="indent_title_in">
+                <i class="pe-7s-news-paper"></i>
+                <h3>{{ "Certificates" | translate }}</h3>
+              </div>
+              <div class="wrapper_indent">
+                <ul class="list_edu">
+                  <li *ngFor="let s of doccertificate">{{ s.name }}</li>
+                </ul>
+                <hr />
+              </div>
+              <!--  End wrapper indent -->
+
+              <div class="indent_title_in">
+                <i class="icon-doc-text-2"></i>
+                <h3>{{ "Articles & Videos" | translate }}</h3>
+              </div>
+              <div class="wrapper_indent">
+                <ul>
+                  <li *ngFor="let s of docarticle">
+                    <a href="">{{ s.link }}</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <!-- /tab_2 -->
+
+            <div
+              class="tab-pane fade"
+              id="reviews"
+              role="tabpanel"
+              aria-labelledby="reviews-tab"
+            >
+              <div class="reviews-container">
+                <div class="review-box clearfix" *ngFor="let s of docReview">
+                  <figure *ngIf="s.image != null" class="rev-thumb">
+                    <img
+                      src="{{ imageURL }}/uploads/users/{{ s.image }}"
+                      alt=""
+                    />
+                  </figure>
+                  <figure *ngIf="s.image == null" class="rev-thumb">
+                    <img src="./assets/img/default.png" alt="" />
+                  </figure>
+                  <div class="rev-content">
+                    <!---[max]="max" [readonly]="isReadonly"-->
+                    <div style="font-size: large; color: #ffc107">
+                      <rating [(ngModel)]="s.rate" class="rating"></rating>
+                    </div>
+                    <div class="rev-info">
+                      {{ s.first_name }} {{ s.last_name }}
+                    </div>
+                    <div class="rev-text">
+                      <p>
+                        {{ s.comment }}
+                      </p>
+                    </div>
+                  </div>
+                  <hr />
+                </div>
+                <!-- End review-box -->
+              </div>
+              <!-- End review-container -->
+
+              <div class="text-right">
+                <a
+                  (click)="submitreview()"
+                  class="btn_1 add_bottom_15"
+                  style="color: white"
+                  >{{ "Submit review" | translate }}</a
+                >
+              </div>
+            </div>
+            <!-- /tab_3 -->
+          </div>
+          <!-- /tab-content -->
+        </div>
+        <!-- /tabs_styled -->
+      </div>
+      <!-- /col -->
+    </div>
+    <!-- /row -->
+  </div>
+  <!-- /container -->
+</main>
+<!-- /main -->
+
+<!-- !Preloader -->
+<div id="page-preloader" *ngIf="showSpinner">
+  <div id="spinner-three">
+    <div id="inner"></div>
+    <div id="outer"></div>
+  </div>
+</div>
+<!-- /// !Preloader -->

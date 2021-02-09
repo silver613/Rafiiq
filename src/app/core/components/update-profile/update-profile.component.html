@@ -1,0 +1,252 @@
+<main class="margin_60_35">
+  <div id="hero_register">
+    <div class="container margin_120_95">
+      <div class="row">
+        <!-- /col -->
+        <div class="col-lg-2 ml-auto"></div>
+        <div class="col-lg-8 ml-auto">
+          <h3 style="text-align: center; color: #fff">
+            {{ "Update Profile" | translate }}
+          </h3>
+          <br />
+
+          <div class="box_form">
+            <form
+              #form="ngForm"
+              (ngSubmit)="
+                submitForm(
+                  first_name,
+                  last_name,
+                  user_name,
+                  phone,
+                  email,
+                  country_id,
+                  birth_date,
+                  nationality,
+                  job
+                )
+              "
+            >
+              <div class="form-row">
+                <div class="col-md-6 offset-3 pl-1 chooseimg">
+                  <div id="preview">
+                    <img
+                      *ngIf="userdata?.image != null"
+                      src="{{ imageURL }}/uploads/users/{{ userdata?.image }}"
+                      style="width: 150px; height: 150px; border-radius: 50%"
+                      class="img-fluid"
+                    />
+                    <img
+                      *ngIf="userdata?.image == null"
+                      src="{{ ImageURl }}"
+                      style="width: 150px; height: 150px; border-radius: 50%"
+                      class="img-fluid"
+                    />
+                    <label for="pattern">{{
+                      "Choose Image" | translate
+                    }}</label>
+                    <input
+                      accept="image/*"
+                      type="file"
+                      (change)="handlefileInput($event.target.files)"
+                      id="pattern"
+                    />
+                  </div>
+                </div>
+
+                <div class="form-group col-md-6 col-xs-6">
+                  <label class="control-label">
+                    {{ "Name" | translate }}
+                  </label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="first_name"
+                    #first_name
+                    value="{{ userdata?.first_name }}"
+                  />
+                </div>
+                <div class="form-group col-md-6 col-xs-6">
+                  <label class="control-label">
+                    {{ "Last name" | translate }}
+                  </label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="last_name"
+                    #last_name
+                    value="{{ userdata?.last_name }}"
+                  />
+                </div>
+
+                <div class="form-group col-md-6 col-xs-6">
+                  <label class="control-label">
+                    {{ "Username" | translate }}
+                  </label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="user_name"
+                    #user_name
+                    value="{{ userdata?.user_name }}"
+                  />
+                </div>
+
+                <div class="form-group col-md-6 col-xs-6">
+                  <label class="control-label">
+                    {{ "Email" | translate }}
+                  </label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="email"
+                    #email
+                    value="{{ userdata?.email }}"
+                  />
+                </div>
+
+                <div class="form-group col-md-6 col-xs-6">
+                  <label class="control-label">
+                    {{ "Phone" | translate }}
+                  </label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="phone"
+                    #phone
+                    value="{{ userdata?.phone }}"
+                  />
+                </div>
+
+                <div class="form-group col-md-6 col-xs-6">
+                  <label class="control-label">
+                    {{ "Birth date" | translate }}
+                  </label>
+                  <input
+                    type="date"
+                    class="form-control"
+                    name="birth_date"
+                    #birth_date
+                    value="{{ userdata?.birth_date }}"
+                  />
+                </div>
+
+                <div class="form-group col-md-6 col-xs-6">
+                  <label class="control-label">{{
+                    "country" | translate
+                  }}</label>
+                  <select class="form-control" name="country_id" #country_id>
+                    <option
+                      value="{{ userdata?.country_id }}"
+                      style="display: none"
+                    >
+                      {{ userdata?.country_name }}
+                    </option>
+                    <option value="{{ s.id }}" *ngFor="let s of allcountry">
+                      {{ s.name }}
+                    </option>
+                  </select>
+                </div>
+
+                <div class="form-group col-md-6 col-xs-6">
+                  <label class="control-label">
+                    {{ "Nationality" | translate }}</label
+                  >
+
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="nationality"
+                    #nationality
+                    value="{{ userdata?.nationality }}"
+                  />
+                </div>
+
+                <div
+                  class="form-group col-md-12 col-xs-12"
+                  [hidden]="state == 'student'"
+                >
+                  <label class="control-label"> {{ "job" | translate }}</label>
+
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="job"
+                    #job
+                    value="{{ userdata?.job }}"
+                  />
+                </div>
+
+                <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <label class="control-label">
+                    {{ "Gender" | translate }}
+                  </label>
+                  <div class="form-group">
+                    <div class="form-check form-check-inline">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="gender"
+                        [checked]="userdata?.gender == 'Male'"
+                        id="userdata?.gender"
+                        value="Male"
+                        (change)="ongender($event)"
+                      />
+                      <label class="form-check-label" for="inlineRadio1">{{
+                        "Male" | translate
+                      }}</label>
+                    </div>
+                    <div class="form-check form-check-inline ml-4">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="gender"
+                        [checked]="userdata?.gender == 'Female'"
+                        id="userdata?.gender"
+                        value="Female"
+                        (change)="ongender($event)"
+                      />
+                      <label class="form-check-label" for="inlineRadio2">{{
+                        "Female" | translate
+                      }}</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-12 dir-text">
+                  <div class="form-group">
+                    <button
+                      type="submit"
+                      class="primary-btn fullWidth-mob mt-ladda-btn ladda-button"
+                      data-style="slide-right"
+                      style="cursor: pointer"
+                    >
+                      <span class="ladda-label"> {{ "save" | translate }}</span>
+                      <span class="ladda-spinner"></span
+                      ><span class="ladda-spinner"></span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <!-- /box_form -->
+        </div>
+        <div class="col-lg-2 ml-auto"></div>
+        <!-- /col -->
+      </div>
+      <!-- /row -->
+    </div>
+    <!-- /container -->
+  </div>
+  <!-- /hero_register -->
+</main>
+<!-- /main -->
+
+<div id="page-preloader" *ngIf="showSpinner">
+  <div id="spinner-three">
+    <div id="inner"></div>
+    <div id="outer"></div>
+  </div>
+</div>

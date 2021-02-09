@@ -1,0 +1,30 @@
+.card-details-wrapper {
+  padding: 25px;
+  border-radius: 2px;
+  margin: 15px 0 50px 0;
+  background-color: white;
+}
+.card-details-wrapper {
+  margin-bottom: 50px;
+}
+
+.terms {
+  padding-top: 30px;
+  margin-bottom: 10px;
+}
+.terms h3 {
+  font-size: 24px;
+}
+.terms h4 {
+  font-size: 20px;
+}
+
+ul {
+  display: block;
+  list-style-type: disc;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 40px;
+}

@@ -1,0 +1,17 @@
+.box-news {
+  text-align: center;
+  margin: 40px 0;
+}
+
+.box-news .box-news-image {
+  display: block;
+  height: 80px;
+  max-height: 80px;
+}
+.box-news-content a {
+  color: #337ab7;
+}
+
+.box-news-content a:hover {
+  color: black;
+}

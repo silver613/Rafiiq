@@ -1,0 +1,173 @@
+<main class="margin_60_35">
+  <div id="breadcrumb">
+    <div class="container">
+      <ul>
+        <li>
+          <a>{{ "confirm your Booking" | translate }}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- /breadcrumb -->
+
+  <div class="container margin_60">
+    <div class="row">
+      <div class="col-xl-2 col-lg-2"></div>
+
+      <div class="col-xl-8 col-lg-8">
+        <div class="box_general_3 booking">
+          <form *ngFor="let s of description">
+            <div class="title">
+              <h3>{{ "Your booking" | translate }}</h3>
+            </div>
+            <div class="summary">
+              <ul>
+                <li>
+                  {{ "Date" | translate }}:
+                  <strong style="float: right">{{ s.date }}</strong>
+                </li>
+                <li>
+                  {{ "time from" | translate }}:
+                  <strong style="float: right">{{ s.time_from }}</strong>
+                </li>
+                <li>
+                  {{ "time to" | translate }}:
+                  <strong style="float: right">{{ s.time_to }}</strong>
+                </li>
+                <li>
+                  {{ "Dr." | translate }}:
+                  <strong style="float: right">{{ s.doctor_name }}</strong>
+                </li>
+              </ul>
+            </div>
+            <ul class="treatments checkout clearfix">
+              <li class="total">
+                {{ "Total Price" | translate
+                }}<strong style="float: right"
+                  >{{ s.price }} {{ "EGY" | translate }}</strong
+                >
+              </li>
+            </ul>
+
+            <ul class="treatments checkout clearfix">
+              <li class="total">
+                {{ "pay Way" | translate }}
+              </li>
+
+              <div class="form-group">
+                <div class="form-check form-check-inline">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="payway"
+                    value="1"
+                    (change)="onpayway($event)"
+                  />
+                  <label class="form-check-label" for="inlineRadio1">{{
+                    "My wallet" | translate
+                  }}</label>
+                </div>
+                <div class="form-check form-check-inline ml-4">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="payway"
+                    value="2"
+                    disabled
+                    (change)="onpayway($event)"
+                  />
+                  <label class="form-check-label" for="inlineRadio2">{{
+                    "Master Card" | translate
+                  }}</label>
+                </div>
+
+                <div class="form-check form-check-inline ml-4">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="payway"
+                    value="3"
+                    (click)="openModal(template)"
+                    (change)="onpayway($event)"
+                  />
+                  <label class="form-check-label" for="inlineRadio2">{{
+                    "Vodafone Cash" | translate
+                  }}</label>
+                </div>
+              </div>
+            </ul>
+            <hr />
+
+            <a (click)="pay()" class="btn_1 full-width" style="color: white">{{
+              "Confirm and pay" | translate
+            }}</a>
+          </form>
+        </div>
+      </div>
+
+      <div class="col-xl-2 col-lg-2"></div>
+      <!-- /col -->
+
+      <!-- /asdide -->
+    </div>
+    <!-- /row -->
+  </div>
+  <!-- /container -->
+
+  <ng-template #template>
+    <div class="modal-header vodcash">
+      <h4 class="modal-title pull-left">{{ "steps" | translate }}</h4>
+      <button
+        type="button"
+        class="close pull-right"
+        aria-label="Close"
+        (click)="modalRef.hide()"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body vodcash">
+      <p>
+        <b>{{
+          "You have chosen Vodafone Cash to pay the session price, and your request is currently on hold. Please follow the following steps to confirm payment and reservation:"
+            | translate
+        }}</b>
+      </p>
+      <ul style="list-style-type: circle; padding: 0 20px">
+        <li>
+          {{
+            "Transfer the session value shown in front of you in the form to the following number 010 ****."
+              | translate
+          }}
+        </li>
+        <li>
+          {{
+            "Photocopy the payment receipt or transfer letter from the phone and send it to the chat customer service"
+              | translate
+          }}
+        </li>
+        <li>
+          {{
+            "Send the name of the trainer and the date of the session with a copy of the receipt or message"
+              | translate
+          }}
+        </li>
+        <li>
+          {{
+            "Wait for customer service response to confirm your reservation"
+              | translate
+          }}
+        </li>
+      </ul>
+    </div>
+  </ng-template>
+</main>
+<!-- /main -->
+
+<!-- !Preloader -->
+<div id="page-preloader" *ngIf="showSpinner">
+  <div id="spinner-three">
+    <div id="inner"></div>
+    <div id="outer"></div>
+  </div>
+</div>

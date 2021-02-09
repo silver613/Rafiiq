@@ -1,0 +1,14 @@
+.form-group {
+  position: relative;
+}
+
+.input-group-append {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+}
+
+.modal-header {
+  border-bottom: none;
+}

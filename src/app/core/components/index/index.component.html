@@ -1,0 +1,355 @@
+<main class="margin_60_35">
+  <div class="hero_home version_1" id="app_section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-7 words-header"></div>
+        <div class="col-md-5">
+          <small style="color: #000">{{ "Application" | translate }}</small>
+          <h3>
+            <strong style="color: #82004a">{{ headerdata?.title }}</strong>
+          </h3>
+
+          <p class="lead" style="color: #000">{{ headerdata?.description }}</p>
+          <div class="app_buttons wow" data-wow-offset="100">
+            <svg
+              version="1.1"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              x="0px"
+              y="0px"
+              viewBox="0 0 43.1 85.9"
+              style="enable-background: new 0 0 43.1 85.9"
+              xml:space="preserve"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="st0 draw-arrow"
+                d="M11.3,2.5c-5.8,5-8.7,12.7-9,20.3s2,15.1,5.3,22c6.7,14,18,25.8,31.7,33.1"
+              />
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="draw-arrow tail-1"
+                d="M40.6,78.1C39,71.3,37.2,64.6,35.2,58"
+              />
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="draw-arrow tail-2"
+                d="M39.8,78.5c-7.2,1.7-14.3,3.3-21.5,4.9"
+              />
+            </svg>
+            <a href="" class="fadeIn"
+              ><img
+                src="./assets/img/apple_app.png"
+                alt=""
+                width="150"
+                height="50"
+                data-retina="true"
+                style="margin-right: 5px; margin-left: 5px"
+            /></a>
+            <a href="" class="fadeIn"
+              ><img
+                src="./assets/img/google_play_app.png"
+                alt=""
+                width="150"
+                height="50"
+                data-retina="true"
+            /></a>
+          </div>
+        </div>
+      </div>
+      <!-- /row -->
+    </div>
+    <!-- /container -->
+  </div>
+  <!-- /Hero -->
+
+  <div class="bg_color_1">
+    <div class="container margin_120_95">
+      <div class="main_title">
+        <h2>{{ "How does RAFiiQ work?" | translate }}</h2>
+      </div>
+
+      <div class="container">
+        <div class="row add_bottom_30 productFeature">
+          <div class="col-lg-6">
+            <img
+              *ngIf="rafik_work1?.image != null"
+              src="{{ imageURL }}/uploads/how_work/{{ rafik_work1?.image }}"
+              style="width: 100%"
+            />
+            <video
+              *ngIf="rafik_work1?.video != null"
+              style="max-width: 450px; max-height: 275px"
+              controls
+            >
+              <source
+                src="{{ imageURL }}/uploads/how_work/{{ rafik_work1?.video }}"
+                type="video/mp4"
+              />
+            </video>
+          </div>
+          <div class="col-lg-6">
+            <div class="productFeatureIntro">
+              <h1 class="display-4">{{ rafik_work1?.title }}</h1>
+              <p class="parag-4">
+                {{ rafik_work1?.description }}
+              </p>
+              <p class="here">
+                <a [routerLink]="'/Psychological'" class="btn_1">{{
+                  "click here" | translate
+                }}</a>
+              </p>
+            </div>
+          </div>
+        </div>
+        <br />
+        <br />
+        <div class="row add_bottom_30 productFeature">
+          <div class="col-lg-6">
+            <div class="productFeatureIntro">
+              <h1 class="display-4">{{ rafik_work2?.title }}</h1>
+              <p class="parag-4">
+                {{ rafik_work2?.description }}
+              </p>
+              <p class="here">
+                <a [routerLink]="'/GridList'" class="btn_1">{{
+                  "click here" | translate
+                }}</a>
+              </p>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <img
+              *ngIf="rafik_work2?.image != null"
+              src="{{ imageURL }}/uploads/how_work/{{ rafik_work2?.image }}"
+              style="width: 100%"
+            />
+            <video
+              *ngIf="rafik_work2?.video != null"
+              style="max-width: 450px; max-height: 275px"
+              controls
+            >
+              <source
+                src="{{ imageURL }}/uploads/how_work/{{ rafik_work2?.video }}"
+                type="video/mp4"
+              />
+            </video>
+          </div>
+        </div>
+      </div>
+      <!-- /row -->
+    </div>
+  </div>
+  <!-- /container -->
+  <div>
+    <div class="margin_120_95">
+      <div class="main_title">
+        <h2>{{ "What our customers are saying about us" | translate }}</h2>
+      </div>
+
+      <carousel>
+        <slide *ngFor="let s of opinions">
+          <div class="text-center py-5 text-black">
+            <div class="lead1">
+              <img
+                *ngIf="s.image != null"
+                src="{{ imageURL }}/uploads/users/{{ s.image }}"
+              />
+              <img *ngIf="s.image == null" src="{{ ImageURl }}" />
+              <p>{{ s.content }}</p>
+            </div>
+          </div>
+        </slide>
+      </carousel>
+
+      <div class="text-center" *ngIf="id >= 1">
+        <p class="here">
+          <a (click)="open(content)" class="btn_1">{{
+            "give your opinion" | translate
+          }}</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg_color_1">
+    <div class="container margin_120_95">
+      <div class="main_title">
+        <h2>{{ "Rafiq blogs" | translate }}</h2>
+        <p>
+          {{
+            "We Provide answers to your most commonly asked questions or provide advice to areas within your niche that your interests resides."
+              | translate
+          }}
+        </p>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-9">
+          <article class="blog wow fadeIn">
+            <div class="row no-gutters" *ngFor="let s of posts">
+              <div class="col-lg-7">
+                <figure>
+                  <a [routerLink]="['/BlogPost', s.id]"
+                    ><img
+                      src="{{ imageURL }}/uploads/posts/{{ s.image }}"
+                      alt=""
+                    />
+                    <div class="preview">
+                      <span>{{ "Read more" | translate }}</span>
+                    </div></a
+                  >
+                </figure>
+              </div>
+              <div class="col-lg-5">
+                <div class="post_info">
+                  <small>{{ s.created_at }}</small>
+                  <h3>
+                    <a [routerLink]="['/BlogPost', s.id]">{{ s.title }}</a>
+                  </h3>
+                  <p>{{ s.description }}</p>
+                </div>
+              </div>
+            </div>
+          </article>
+          <!-- /article -->
+        </div>
+        <!-- /col -->
+
+        <aside class="col-lg-3">
+          <div class="widget">
+            <div class="widget-title">
+              <h4>{{ "Recent Posts" | translate }}</h4>
+            </div>
+            <ul class="comments-list" *ngFor="let s of recent_posts">
+              <li>
+                <div class="alignleft">
+                  <a [routerLink]="['/BlogPost', s.id]"
+                    ><img
+                      src="{{ imageURL }}/uploads/posts/{{ s.image }}"
+                      alt=""
+                  /></a>
+                </div>
+                <small>{{ s.created_at }}</small>
+                <h3>
+                  <a [routerLink]="['/BlogPost', s.id]" title="">{{
+                    s.title
+                  }}</a>
+                </h3>
+              </li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </div>
+
+  <div class="margin_120_95 container">
+    <div class="row">
+      <div class="col-md-12 sponsors-wrapper">
+        <ul>
+          <li class="list-press" *ngFor="let s of news">
+            <a href="{{ s.link }}" target="_blank">
+              <img
+                class="img-responsive"
+                width="100"
+                height="100"
+                src="{{ imageURL }}/uploads/news/{{ s.image }}"
+                alt=""
+              />
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="col-lg-12 col-md-12 col-sm-12">
+        <p class="link-to-more text-center">
+          <a [routerLink]="'/AllNEWS'"
+            >{{ "More from the press" | translate
+            }}<i *ngIf="language == 'en'" class="icon-right-dir-1"></i>
+            <i *ngIf="language == 'ar'" class="icon-left-dir-1"></i
+          ></a>
+        </p>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- <div id="myModal" class="modal fade" role="dialog" *ngIf="E3lan != null">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">
+          &times;
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>
+          <a
+            href="{{ E3lan?.link }}"
+            target="_blank"
+            *ngIf="E3lan?.type == 'text'"
+            >{{ E3lan?.text }}</a
+          >
+        </p>
+
+        <a
+          href="{{ E3lan?.link }}"
+          target="_blank"
+          *ngIf="E3lan?.type == 'image'"
+          ><img
+            src="{{ imageURL }}/uploads/how_work/{{ E3lan?.image }}"
+            style="width: 100%; height: 100%"
+        /></a>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<!-- !Preloader -->
+<div id="page-preloader" *ngIf="showSpinner">
+  <div id="spinner-three">
+    <div id="inner"></div>
+    <div id="outer"></div>
+  </div>
+</div>
+<!-- /// !Preloader -->
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">
+      {{ "give your opinion" | translate }}
+    </h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <form (ngSubmit)="submitForm(content)">
+      <div class="form-group">
+        <input
+          #content
+          name="content"
+          type="text"
+          class="form-control"
+          placeholder="{{ 'Your opinion' | translate }}"
+          style="width: 100%"
+        />
+      </div>
+
+      <div class="modal-footer">
+        <button type="submit" class="btn_1">{{ "Save" | translate }}</button>
+      </div>
+    </form>
+  </div>
+</ng-template>

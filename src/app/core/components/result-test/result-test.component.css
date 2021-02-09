@@ -1,0 +1,53 @@
+.qu-box {
+  border-radius: 4px;
+  background-color: white;
+  box-shadow: 3px 5px 16.2px 1.8px rgba(0, 0, 0, 0.11);
+  padding: 20px;
+  margin: 50px 0;
+}
+
+.qu-box .qu-body {
+  padding: 20px 50px;
+}
+#pnlResult h2 {
+  text-align: center;
+  text-transform: uppercase;
+  color: #1f90cf;
+  font-size: 32px;
+  font-family: "Din Next Regular", Arial, sans-serif;
+  margin-bottom: 20px;
+}
+
+.statue-des {
+  margin-bottom: 30px;
+}
+
+.statue-des h4 {
+  font-size: 22px;
+  font-family: "Din Next Regular", Arial, sans-serif;
+}
+.statue-des h4 {
+  color: #1f90cf;
+}
+
+.specialized-title {
+  color: #1f90cf;
+  padding: 0;
+  font-size: 16px;
+  margin-bottom: 16px;
+  font-weight: 700;
+}
+
+.therapists-container {
+  background: #f8f8f8;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.nav-tabs .nav-link.active {
+  color: #fdaf43 !important;
+}
+
+a:hover {
+  color: #82004a !important;
+}

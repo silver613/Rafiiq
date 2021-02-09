@@ -1,0 +1,147 @@
+<main class="margin_60_35">
+  <div class="container margin_120_95">
+    <div class="main_title">
+      <h2>{{ "LEARNING AND TAECHING" | translate }}</h2>
+      <p>
+        {{
+          "This test is designed to measure your skills .Please read the test sentences and choose the best answer that fits you during the last 2 weeks."
+            | translate
+        }}
+      </p>
+    </div>
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="qu-box" style="background-color: #d5f0ff; color: #014e7e">
+          <h3>{{ "Instructions" | translate }}</h3>
+          <p>{{ "Please read the scale items" | translate }}</p>
+          <p>
+            {{
+              "This assessment does not indicate a confirmed diagnosis. To determine any potential diagnosis, discuss your results with your therapist. Your results will be shown to you only."
+                | translate
+            }}
+          </p>
+        </div>
+      </div>
+      <div class="col-lg-8">
+        <div class="qu-box">
+          <div class="qu-body">
+            <mat-horizontal-stepper linear #stepper>
+              <mat-step *ngFor="let s of questionanswers; let i = index">
+                <div class="col-md-12 text-center">
+                  <ul class="test">
+                    <div class="col-md-12 question-outer">
+                      <li class="question">{{ s.question }}</li>
+                      <ul
+                        class="answers"
+                        style="display: inline-block; text-align: left"
+                      >
+                        <li class="answers-list" *ngFor="let ans of s.answers">
+                          <div class="form-check">
+                            <input
+                              class="form-check-input"
+                              type="radio"
+                              id="{{ ans.answer }}"
+                              [value]="ans.answer"
+                              name="name"
+                              required
+                              (click)="ansv(s.id, ans.id)"
+                            />
+                            <label class="form-check-label radiono">
+                              {{ ans.answer }}
+                            </label>
+                          </div>
+                        </li>
+                      </ul>
+                      <div>
+                        <div class="col-md-12" *ngIf="i == 0">
+                          <button
+                            mat-button
+                            matStepperNext
+                            class="orange-btn btn-next"
+                            type="button"
+                          >
+                            {{ "Next" | translate }}
+                          </button>
+                        </div>
+
+                        <div class="col-md-12" *ngIf="i == count - 1">
+                          <button
+                            mat-button
+                            matStepperPrevious
+                            class="orange-btn btn-next"
+                            type="button"
+                          >
+                            {{ "Previous" | translate }}
+                          </button>
+                          <button
+                            class="orange-btn btn-next submitbtn"
+                            title="You must answer all questions to submit data"
+                            (click)="submitForm()"
+                            type="submit"
+                          >
+                            {{ "Submit" | translate }}
+                          </button>
+                        </div>
+
+                        <div class="col-md-12" *ngIf="i != count - 1 && i != 0">
+                          <button
+                            mat-button
+                            matStepperPrevious
+                            class="orange-btn btn-next"
+                            type="button"
+                          >
+                            {{ "Previous" | translate }}
+                          </button>
+
+                          <button
+                            mat-button
+                            matStepperNext
+                            class="orange-btn btn-next"
+                            type="button"
+                          >
+                            {{ "Next" | translate }}
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </ul>
+                </div>
+                <mat-progress-bar mode="determinate" value="{{ (i + 1) * 5 }}">
+                  <div>{{ i }} {{ "out_of" | translate }} {{ count }}</div>
+                </mat-progress-bar>
+
+                <div class="text-center" style="margin-top: 9px">
+                  <p style="color: #16a9ff">
+                    {{ i + 1 }} {{ "out_of" | translate }} {{ count }}
+                  </p>
+                </div>
+              </mat-step>
+            </mat-horizontal-stepper>
+
+            <div
+              *ngIf="questionanswers?.length === 0"
+              class="text-center"
+              style="margin-top: 110px; margin-bottom: 110px"
+            >
+              <button
+                class="btn"
+                style="background-color: #16a9ff; color: white"
+                [routerLink]="'/DiseaseTEST2'"
+              >
+                {{ "move to next exam" | translate }}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- !Preloader -->
+<div id="page-preloader" *ngIf="showSpinner">
+  <div id="spinner-three">
+    <div id="inner"></div>
+    <div id="outer"></div>
+  </div>
+</div>

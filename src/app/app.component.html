@@ -1,0 +1,545 @@
+<style>
+  body {
+    font-family: "Lato", sans-serif;
+  }
+
+  .sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: white;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    z-index: 65550165614541;
+  }
+
+  .sidenav a,
+  .dropdown-btn {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 16px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+  }
+
+  .sidenav a:hover {
+    color: #f1f1f1;
+  }
+  .dropdown-container {
+    display: none;
+    padding-left: 8px;
+  }
+  .sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+
+  @media screen and (max-height: 450px) {
+    .sidenav {
+      padding-top: 15px;
+    }
+    .sidenav a {
+      font-size: 18px;
+    }
+  }
+</style>
+<style>
+  .fa-bell {
+    color: #82004a;
+  }
+  .nav-pills .nav-link.active,
+  .nav-pills .show > .nav-link {
+    background-color: #17a2b8;
+  }
+  .dropdown-menu1 {
+    top: 60px;
+    right: 0px;
+    left: unset;
+    width: 460px;
+    box-shadow: 0px 5px 7px -1px #c1c1c1;
+    padding-bottom: 0px;
+    padding: 0px;
+  }
+  .dropdown-menu1:before {
+    content: "";
+    position: absolute;
+    top: -20px;
+    right: 12px;
+    border: 10px solid #343a40;
+    border-color: transparent transparent #343a40 transparent;
+  }
+  .head {
+    padding: 5px 15px;
+    border-radius: 3px 3px 0px 0px;
+  }
+  .footer {
+    padding: 5px 15px;
+    border-radius: 0px 0px 3px 3px;
+  }
+  .notification-box {
+    padding: 10px 0px;
+  }
+  .bg-gray {
+    background-color: #eee;
+  }
+  @media (max-width: 640px) {
+    .dropdown-menu1 {
+      top: 50px;
+      left: -16px;
+      width: 290px;
+    }
+    .nav {
+      display: block;
+    }
+    .nav .nav-item,
+    .nav .nav-item a {
+      padding-left: 0px;
+    }
+    .message {
+      font-size: 13px;
+    }
+  }
+</style>
+
+<div>
+  <div id="page" [ngClass]="'currentTheme' | translate">
+    <header class="header_sticky">
+      <a pageScroll href="#menu" class="btn_mobile">
+        <div class="hamburger hamburger--spin" id="hamburger">
+          <div class="hamburger-box">
+            <div class="hamburger-inner" (click)="openNav()"></div>
+          </div>
+        </div>
+      </a>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 col-6">
+            <div id="logo">
+              <a [routerLink]="'/index'" title="RAFiiQ">
+                <img
+                  src="./assets/img/logo.png"
+                  data-retina="true"
+                  alt=""
+                  width="50"
+                  height="50"
+                />
+                <b style="margin-left: 10px; font-size: 20px">RAFiiQ</b></a
+              >
+            </div>
+          </div>
+          <div class="col-lg-9 col-6">
+            <ul id="top_access" class="loginbtn">
+              <li>
+                <a [routerLink]="'/Login'"><i class="pe-7s-user"></i></a>
+              </li>
+              <li>
+                <a [routerLink]="'/Register'"><i class="pe-7s-add-user"></i></a>
+              </li>
+            </ul>
+
+            <nav id="menu" class="main-menu">
+              <ul>
+                <li>
+                  <a
+                    [routerLink]="'/index'"
+                    routerLinkActive="home"
+                    routerLinkActiveOptions="{exact: true}"
+                  >
+                    {{ "home" | translate }}</a
+                  >
+                </li>
+                <li>
+                  <a
+                    [routerLink]="'/GridList'"
+                    routerLinkActive="home"
+                    [routerLinkActiveOptions]="{ exact: true }"
+                  >
+                    {{ "Trainers" | translate }}
+                  </a>
+                  <ul>
+                    <li *ngFor="let s of specialists">
+                      <a
+                        style="cursor: pointer"
+                        (click)="testtrainer(s.id)"
+                        routerLinkActive="home"
+                        [routerLinkActiveOptions]="{ exact: true }"
+                        >{{ s.name }}</a
+                      >
+                    </li>
+                  </ul>
+                </li>
+
+                <!--    <li>
+                <a  [routerLink]="'/Psychological'" routerLinkActive="home" [routerLinkActiveOptions]="{exact: true}">		{{ 'Tests' | translate }} </a>
+                <ul>
+									<li *ngFor="let s of Psychological"><a [routerLink]="'/Psychological'"  routerLinkActive="home" [routerLinkActiveOptions]="{exact: true}">{{s.name}}</a></li>
+								
+								</ul>
+                </li> -->
+
+                <li>
+                  <a
+                    [routerLink]="'/Blog1'"
+                    routerLinkActive="home"
+                    [routerLinkActiveOptions]="{ exact: true }"
+                  >
+                    {{ "Blog" | translate }}</a
+                  >
+                </li>
+
+                <li>
+                  <a
+                    [routerLink]="'/Fortherapists'"
+                    routerLinkActive="home"
+                    [routerLinkActiveOptions]="{ exact: true }"
+                  >
+                    {{ "For Trainers" | translate }}</a
+                  >
+                </li>
+                <li class="nav-item lang-change">
+                  <a
+                    class="nav-link"
+                    (click)="
+                      changeLang(translate.currentLang === 'ar' ? 'en' : 'ar')
+                    "
+                  >
+                    {{ translate.currentLang === "ar" ? "English" : "العربية" }}
+                  </a>
+                </li>
+                <!-- <li>
+                  <select
+                    class="langu"
+                    #langSelect
+                    (change)="changeLang(langSelect.value)"
+                  >
+                    <option
+                      *ngFor="let lang of translate.getLangs()"
+                      [value]="lang"
+                      [selected]="lang === translate.currentLang"
+                      (click)="reload()"
+                    >
+                      <span *ngIf="lang == 'ar'">{{
+                        "Arabic" | translate
+                      }}</span>
+                      <span *ngIf="lang != 'ar'">{{
+                        "English" | translate
+                      }}</span>
+                    </option>
+                  </select>
+                </li> -->
+
+                <li class="user-client" style="display: none">
+                  <div class="dropdown" style="display: inline-block">
+                    <a
+                      class="name_user dropdown-toggle"
+                      id="dropdownMenuButton"
+                      data-toggle="dropdown"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                      style="cursor: pointer"
+                      (click)="profileclicked()"
+                    >
+                      {{ first_name }}
+                    </a>
+
+                    <div
+                      class="dropdown-menu dropdown-multicol"
+                      aria-labelledby="dropdownMenuButton"
+                    >
+                      <a class="dropdown-item" [routerLink]="'/profile'"
+                        >{{ "Profile" | translate }}
+                      </a>
+                      <div class="dropdown-divider"></div>
+                      <a
+                        class="dropdown-item logout-btn"
+                        style="cursor: pointer"
+                        (click)="logout()"
+                        >{{ "Logout" | translate }}
+                      </a>
+                    </div>
+                  </div>
+
+                  <div class="dropdown" style="display: inline-block">
+                    <i
+                      class="icon-bell-alt dropdown-toggle"
+                      (click)="shownotification()"
+                      style="color: #82004a; font-size: 22px; cursor: pointer"
+                      id="dropdownMenuButton"
+                      data-toggle="dropdown"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                    >
+                      <span class="badge bage1">{{ count }}</span>
+                    </i>
+                    <div
+                      class="dropdown-menu dropdown-multicol2 ay5ara"
+                      style="
+                        max-height: 320px;
+                        margin-top: 25px;
+                        overflow: auto;
+                        padding: 8px;
+                        border-radius: 5px;
+                      "
+                      aria-labelledby="dropdownMenuButton"
+                    >
+                      <!--  <div class="headnotification">
+      <h5><b>{{'Notifications'|translate}}</b></h5>
+
+    </div> -->
+
+                      <a class="dropdown-item" *ngFor="let s of notification">
+                        <img
+                          src="{{ ImageURl }}"
+                          style="
+                            height: 40px;
+                            width: 40px;
+                            top: -15px;
+                            border-radius: 50%;
+                            position: relative;
+                          "
+                        />
+                        <div
+                          class="bodynotification"
+                          *ngIf="s.click_action != '7'"
+                          style="display: inline-block; max-height: 600px"
+                        >
+                          <h5>{{ s.title }}</h5>
+                          <h6 style="font-size: 10px">{{ s.message }}</h6>
+                        </div>
+                        <hr />
+
+                        <div
+                          class="bodynotification"
+                          *ngIf="s.click_action == '7'"
+                          style="display: inline-block; max-height: 600px"
+                        >
+                          <h6>{{ s.message }}</h6>
+                          <div
+                            [hidden]="
+                              s.click_action == '9' || errorrequest == 0
+                            "
+                          >
+                            <button
+                              class="btn btn-primary"
+                              (click)="confirmedrequest(s.id)"
+                            >
+                              {{ "confirm" | translate }}
+                            </button>
+                            <button
+                              class="btn btn-secondary"
+                              style="margin-right: 10px; margin-left: 10px"
+                              (click)="deletedrequest(s.id)"
+                            >
+                              {{ "Delete" | translate }}
+                            </button>
+                          </div>
+                          <div
+                            *ngIf="errorrequest == 0 || s.click_action == '9'"
+                          >
+                            <p>{{ "request confirmed" | translate }}</p>
+                          </div>
+
+                          <div
+                            *ngIf="errorrequest == 4 || s.click_action == '9'"
+                          >
+                            <p>{{ "request removed" | translate }}</p>
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+
+      <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" (click)="closeNav()"
+          >&times;</a
+        >
+        <br />
+
+        <a
+          [routerLink]="'/index'"
+          routerLinkActive="home"
+          routerLinkActiveOptions="{exact: true}"
+          (click)="closeNav()"
+          >{{ "Home" | translate }}</a
+        >
+        <div class="dropdown-divider"></div>
+
+        <a
+          [routerLink]="'/GridList'"
+          routerLinkActive="home"
+          [routerLinkActiveOptions]="{ exact: true }"
+          (click)="closeNav()"
+          >{{ "Trainer List" | translate }}
+        </a>
+        <div class="dropdown-divider"></div>
+
+        <a class="dropdown-btn" (click)="myAccFunc()">
+          {{ "Tests" | translate }} <i class="fa fa-caret-down"></i>
+        </a>
+        <div class="dropdown-container">
+          <a
+            *ngFor="let s of Psychological"
+            [routerLink]="'/Psychological'"
+            routerLinkActive="home"
+            [routerLinkActiveOptions]="{ exact: true }"
+            (click)="closeNav()"
+            >{{ s.name }}</a
+          >
+        </div>
+        <div class="dropdown-divider"></div>
+
+        <a
+          [routerLink]="'/Blog1'"
+          routerLinkActive="home"
+          [routerLinkActiveOptions]="{ exact: true }"
+          (click)="closeNav()"
+          >{{ "Blog" | translate }}</a
+        >
+
+        <div class="dropdown-divider"></div>
+
+        <a
+          [routerLink]="'/Fortherapists'"
+          routerLinkActive="home"
+          [routerLinkActiveOptions]="{ exact: true }"
+          (click)="closeNav()"
+          >{{ "For Trainers" | translate }}</a
+        >
+
+        <div class="dropdown-divider"></div>
+
+        <a class="user-client">
+          <li class="nav-item dropdown profile" style="list-style: none">
+            <a
+              class="nav-link dropdown-toggle"
+              id="navbarDropdown"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              &nbsp; <a class="name_user"> {{ first_name }}</a>
+            </a>
+
+            <div
+              class="dropdown-menu dropdown-menu-right account-info-drop"
+              aria-labelledby="navbarDropdown"
+            >
+              <a class="dropdown-item" [routerLink]="'/profile'"
+                >{{ "Profile" | translate }}
+              </a>
+
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item logout-btn"
+                >{{ "Logout" | translate }}
+              </a>
+            </div>
+          </li>
+        </a>
+      </div>
+      <!-- /container -->
+    </header>
+    <!-- /header -->
+    <a class="pic-chat" style="display: none">
+      <img src="./assets/img/logo.png" class="img-fluid img-chat" />
+    </a>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3 col-md-12 col-sm-12">
+          <div id="root">
+            <div style="width: 100%; height: 100%">
+              <div class="chat">
+                <div class="header-chat">
+                  <div class="row">
+                    <div class="col-md-10">
+                      <p class="thanks">{{ "customer service" | translate }}</p>
+                    </div>
+
+                    <div class="col-md-2">
+                      <a class="minus" style="cursor: pointer">
+                        <i class="fa fa-minus minus"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="basic-chat">
+                  <div class="basic-img col-sm-12">
+                    <div class="basic1-img">
+                      <img src="./assets/img/logo.png" />
+                    </div>
+                    <div class="active1"></div>
+                    <div class="">
+                      <div class="inkom-chat">RAFIQ</div>
+                      <div class="chat-desc">
+                        {{ "customer service" | translate }}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <form #form="ngForm">
+                  <div class="chat-msg">
+                    <div class="row">
+                      <div class="col-sm-10">
+                        <textarea
+                          class="form-control"
+                          #message
+                          name="message"
+                          id="text"
+                          placeholder="{{
+                            'Write your message here and hit enter to send it'
+                              | translate
+                          }}"
+                        ></textarea>
+                      </div>
+                      <div class="col-sm-2">
+                        <button
+                          type="submit"
+                          class="btn btn-primary"
+                          style="height: 100%"
+                        >
+                          {{ "send" | translate }}
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+                <div class="chat-footer">
+                  <a href="https://www.codecaique.com" target="_blank">
+                    <span>Powered by </span>
+                    <strong>code</strong>
+                    <strong>caique</strong>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <app-servicechat></app-servicechat>
+
+    <router-outlet></router-outlet>
+
+    <app-footer></app-footer>
+  </div>
+</div>
+<!-- page -->

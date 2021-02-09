@@ -1,0 +1,27 @@
+main {
+  width: 90%;
+  margin: auto;
+  text-align: center;
+  color: #fdaf43;
+  background-color: white;
+  height: 400px;
+  padding: 30px;
+  margin-top: 60px;
+}
+
+button {
+  margin-top: 20px;
+  background-color: #fdaf43;
+  color: #ffffff;
+  text-decoration: none;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 40px;
+  padding-right: 40px;
+  display: inline-block;
+  border-radius: 10px;
+}
+
+button:hover {
+  background-color: #82004a;
+}

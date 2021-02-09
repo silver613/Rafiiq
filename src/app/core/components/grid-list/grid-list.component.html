@@ -1,0 +1,137 @@
+<main class="margin_60_35">
+  <div id="results">
+    <div class="container">
+      <form #searchform="ngForm" (ngSubmit)="onSubmit(searchform)">
+        <div class="row">
+          <div class="col-md-5 col-sm-12">
+            <div class="search_bar_list">
+              <select
+                placeholder="تخصصات"
+                name="specialist"
+                [(ngModel)]="specialist"
+                class="form-control"
+                (change)="onChangespacial($event.target.value)"
+              >
+                <option value="{{ s.id }}" *ngFor="let s of specialists">
+                  {{ s.name }}
+                </option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-5 col-sm-12">
+            <div class="search_bar_list">
+              <input
+                type="text"
+                value=""
+                name="name"
+                [(ngModel)]="name"
+                class="form-control"
+                placeholder="{{ 'Trainer name' | translate }}"
+                (change)="onChangename($event.target.value)"
+              />
+            </div>
+          </div>
+
+          <div class="col-md-2 col-sm-12">
+            <div class="searchlist">
+              <input
+                type="submit"
+                value="{{ 'Search' | translate }}"
+                style="width: 100%"
+              />
+            </div>
+          </div>
+        </div>
+      </form>
+      <!-- /row -->
+    </div>
+    <!-- /container -->
+  </div>
+  <!-- /results -->
+
+  <div class="filters_listing">
+    <div class="container">
+      <ul class="clearfix">
+        <li></li>
+
+        <li>
+          <select
+            name="orderby"
+            class="selectbox"
+            (change)="onChangesort($event.target.value)"
+          >
+            <option value="Sort by">{{ "Sort by" | translate }}</option>
+            <option value="1">{{ "Top Rated" | translate }}</option>
+            <option value="2">{{ "Sort (A to Z) ↓" | translate }}</option>
+            <option value="3">{{ "Sort (Z to A) ↑" | translate }}</option>
+          </select>
+        </li>
+      </ul>
+    </div>
+    <!-- /container -->
+  </div>
+  <!-- /filters -->
+
+  <div class="container margin_60_35">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="row">
+          <div class="col-md-4" *ngFor="let s of Trainer">
+            <div class="box_list wow fadeIn">
+              <!-- <a href="" class="wish_bt"></a> -->
+              <figure *ngIf="s.image != null">
+                <a [routerLink]="['/DetailPage2', s.id]" class="imgDoc"
+                  ><img
+                    src="{{ imageURL }}/uploads/users/{{ s.image }}"
+                    class="img-fluid"
+                    alt=""
+                  />
+                  <div class="preview">
+                    <span>{{ "Read more" | translate }}</span>
+                  </div>
+                </a>
+              </figure>
+              <figure *ngIf="s.image == null">
+                <a [routerLink]="['/DetailPage2', s.id]" class="imgDoc"
+                  ><img
+                    src="./assets/img/default.png"
+                    class="img-fluid"
+                    alt=""
+                  />
+                  <div class="preview">
+                    <span>{{ "Read more" | translate }}</span>
+                  </div>
+                </a>
+              </figure>
+              <div class="wrapper">
+                <h3>
+                  {{ s.appreviation }} {{ s.first_name }} {{ s.last_name }}
+                </h3>
+
+                <p>{{ s.surname }}</p>
+                <div style="font-size: large; color: #ffc107 ;">
+                  <rating
+                    [(ngModel)]="s.rate"
+                    [max]="max"
+                    [readonly]="isReadonly"
+                    class="rating"
+                  ></rating
+                  ><small *ngIf="s.rate != null">({{ s.rate }})</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- !Preloader -->
+<div id="page-preloader" *ngIf="showSpinner">
+  <div id="spinner-three">
+    <div id="inner"></div>
+    <div id="outer"></div>
+  </div>
+</div>
+<!-- /// !Preloader -->

@@ -1,0 +1,182 @@
+.selectbox {
+  background-color: #fff;
+  border: 1px solid #e1e8ed;
+  height: 32px;
+
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  border-radius: 3px;
+  min-width: 160px;
+}
+.imgDoc img {
+  width: 100%;
+  height: 100%;
+}
+
+.reviews-container {
+  margin-top: 50px;
+}
+.rev-thumb img {
+  border-radius: 50%;
+}
+.fees {
+  display: inline-block;
+  padding: 0 10px;
+  margin: 0px 0 10px 0px;
+  font-size: 15px;
+}
+.service-header {
+  background: #2ecc71;
+  padding: 5px;
+  border-radius: 2px;
+  color: #fff;
+}
+#mySidedoc h4.title-text {
+  line-height: 2;
+  font-size: 20px;
+}
+.duration-title {
+  font-size: 16px;
+  color: #333;
+}
+
+.duration-title label {
+  display: inline-block;
+  max-width: 100%;
+  margin-bottom: 5px;
+}
+.times-booking {
+  padding: 10px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.times-booking label {
+  font-family: "Din next Medium";
+  font-weight: 500;
+}
+
+.times-booking label {
+  line-height: 2;
+  font-size: 16px;
+}
+
+.times-booking a.primary-btn {
+  clear: both;
+  color: #fff;
+  background-color: blue;
+  padding: 7px 8px;
+}
+.primary-btn {
+  text-align: center;
+  color: white;
+  border: none;
+  background-color: #16a9ff;
+  border-radius: 4px;
+
+  box-shadow: 3px 5px 16.2px 1.8px rgba(0, 0, 0, 0.11);
+  display: inline-block;
+}
+.rev-text p {
+  font-size: 25px;
+}
+
+.see-more a {
+  font-size: 18px;
+  text-decoration: underline;
+  color: #16a9ff;
+}
+
+.filter-btn {
+  font-family: "Din Next Medium";
+  font-weight: normal;
+  font-size: 14px;
+  height: 40px;
+}
+.white-btn {
+  background: #fff;
+  color: #333;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 2px;
+  box-shadow: 3px 5px 16.2px 1.8px rgba(0, 0, 0, 0.11);
+  font-size: 16px;
+  display: inline-block;
+}
+.filter-btn span {
+  padding-right: 1px;
+}
+.white-btn:hover {
+  color: blue;
+}
+
+/*filter*/
+.filter-wrapper-float {
+  margin-top: 50px;
+}
+
+.filter-wrapper-float {
+  padding: 5px 20px;
+}
+#searchForm h5 {
+  font-size: 16px;
+  color: #333;
+}
+
+.filter-wrapper-float .checkbox-inline {
+  display: inline-block;
+  padding: 0px 0px 10px 0px;
+}
+.form-check-inline {
+  margin: 5px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+.orange-btn:hover,
+.green-btn:hover,
+blue-reverse-btn:hover {
+  color: #fff;
+}
+.orange-btn:hover {
+  background-color: #1f90cf;
+  color: #fff;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+}
+.orange-btn {
+  color: white;
+  border: none;
+  background-color: #16a9ff;
+  border-radius: 4px;
+  line-height: 35px;
+  padding-left: 25px;
+  padding-right: 25px;
+  box-shadow: 3px 5px 16.2px 1.8px rgba(0, 0, 0, 0.11);
+  text-align: center;
+  display: inline-block;
+}
+.searchlist input {
+  color: #82004a;
+  font-weight: 600;
+
+  border: 0;
+  padding: 0 15px;
+  height: 40px;
+  cursor: pointer;
+
+  border-radius: 0 3px 3px 0;
+  background-color: #fbe5cd;
+}
+@media (max-width: 767px) {
+  .search_bar_list {
+    margin-bottom: 5px;
+  }
+  .searchlist {
+    margin-bottom: 5px;
+  }
+  #results {
+    background: none;
+  }
+}

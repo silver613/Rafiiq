@@ -1,0 +1,94 @@
+<main class="margin_60_35">
+  <div id="breadcrumb">
+    <div class="container">
+      <ul>
+        <li>
+          <a>{{ "Blogs" | translate }}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="container margin_60">
+    <div class="main_title">
+      <h1>{{ "Rafiq blogs" | translate }}</h1>
+      <p>
+        {{
+          "We Provide answers to your most commonly asked questions or provide advice to areas within your niche that your interests resides."
+            | translate
+        }}
+      </p>
+    </div>
+    <div class="row">
+      <div class="col-lg-9">
+        <article class="blog wow fadeIn" *ngFor="let s of posts">
+          <div class="row no-gutters">
+            <div class="col-lg-7">
+              <figure>
+                <a [routerLink]="['/BlogPost', s.id]"
+                  ><img
+                    src="{{ imageURL }}/uploads/posts/{{ s.image }}"
+                    alt=""
+                  />
+                  <div class="preview">
+                    <span>{{ "Read more" | translate }}</span>
+                  </div></a
+                >
+              </figure>
+            </div>
+            <div class="col-lg-5">
+              <div class="post_info">
+                <small>{{ s.created_at }}</small>
+                <h3>
+                  <a [routerLink]="['/BlogPost', s.id]">{{ s.title }}</a>
+                </h3>
+                <p>{{ s.description }}</p>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <aside class="col-lg-3">
+        <div class="widget">
+          <div class="widget-title">
+            <h4>{{ "Recent Posts" | translate }}</h4>
+          </div>
+          <ul class="comments-list" *ngFor="let s of recent_posts">
+            <li>
+              <div class="alignleft">
+                <a [routerLink]="['/BlogPost', s.id]"
+                  ><img src="{{ imageURL }}/uploads/posts/{{ s.image }}" alt=""
+                /></a>
+              </div>
+              <small>{{ s.created_at }}</small>
+              <h3>
+                <a [routerLink]="['/BlogPost', s.id]" title="">{{ s.title }}</a>
+              </h3>
+            </li>
+          </ul>
+        </div>
+
+        <div class="widget">
+          <div class="widget-title">
+            <h4>{{ "Blog Categories" | translate }}</h4>
+          </div>
+          <ul class="cats" *ngFor="let s of category">
+            <li>
+              <a [routerLink]="['/postscategory', s.id]"
+                >{{ s.name }} <span>({{ s.count }})</span></a
+              >
+            </li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<div id="page-preloader" *ngIf="showSpinner">
+  <div id="spinner-three">
+    <div id="inner"></div>
+    <div id="outer"></div>
+  </div>
+</div>

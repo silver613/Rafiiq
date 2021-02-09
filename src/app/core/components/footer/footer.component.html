@@ -1,0 +1,123 @@
+<footer>
+  <div class="container margin_60_35">
+    <div class="row">
+      <div class="col-lg-3 col-md-12">
+        <p>
+          <a [routerLink]="'/index'" title="RAFiiQ">
+            <img
+              src="./assets/img/logo.png"
+              data-retina="true"
+              alt=""
+              width="163"
+              height="36"
+              class="img-fluid"
+            />
+          </a>
+        </p>
+        <p class="footrafik">
+          <a [routerLink]="'/index'" title="Rafik">
+            <b style="font-size: 40px; margin-left: 20px">RAFiiQ</b>
+          </a>
+        </p>
+      </div>
+      <div class="col-lg-3 col-md-4 footer-words">
+        <h5>{{ "About" | translate }}</h5>
+        <ul class="links">
+          <li>
+            <a [routerLink]="'/about'">{{ "About us" | translate }}</a>
+          </li>
+          <li>
+            <a [routerLink]="'/Blog1'">{{ "Blog" | translate }}</a>
+          </li>
+          <li>
+            <a [routerLink]="'/Faq'">{{ "FAQ" | translate }}</a>
+          </li>
+          <li>
+            <a [routerLink]="'/Login'" class="loginbtn">{{
+              "Login" | translate
+            }}</a>
+          </li>
+          <li>
+            <a [routerLink]="'/Register'" class="loginbtn">{{
+              "Register" | translate
+            }}</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-lg-3 col-md-4 footer-words">
+        <h5>{{ "Useful links" | translate }}</h5>
+        <ul class="links">
+          <li>
+            <a [routerLink]="'/Terms'">{{
+              "Terms and conditions" | translate
+            }}</a>
+          </li>
+          <li>
+            <a [routerLink]="'/Privacy'">{{ "Privacy Policy" | translate }}</a>
+          </li>
+          <li>
+            <a [routerLink]="'/RegisterDoctor'" class="loginbtn">{{
+              "Join as a Trainer" | translate
+            }}</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-lg-3 col-md-4 footer-words">
+        <h5>{{ "Contact with Us" | translate }}</h5>
+        <ul class="contacts">
+          <li>
+            <a><i class="icon-phone-squared"></i> {{ Aboutrafiq?.phone }}</a>
+          </li>
+
+          <li>
+            <a><i class="icon_mail_alt"></i> {{ Aboutrafiq?.email }}</a>
+          </li>
+        </ul>
+        <div class="follow_us">
+          <h5>{{ "Follow us" | translate }}</h5>
+          <ul>
+            <li>
+              <a href="{{ Aboutrafiq?.facebook }}"
+                ><i class="social_facebook"></i
+              ></a>
+            </li>
+            <li>
+              <a href="{{ Aboutrafiq?.twitter }}"
+                ><i class="social_twitter"></i
+              ></a>
+            </li>
+            <li>
+              <a href="{{ Aboutrafiq?.linkedIn }}"
+                ><i class="social_linkedin"></i
+              ></a>
+            </li>
+            <li>
+              <a href="{{ Aboutrafiq?.instagram }}"
+                ><i class="social_instagram"></i
+              ></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!--/row-->
+    <hr />
+    <div class="row">
+      <div class="col-md-8">
+        <ul id="additional_links">
+          <li>
+            <a [routerLink]="'/Terms'">{{
+              "Terms and conditions" | translate
+            }}</a>
+          </li>
+          <li>
+            <a [routerLink]="'/Privacy'">{{ "Privacy" | translate }}</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <div id="copy">© 2020 RAFiiQ</div>
+      </div>
+    </div>
+  </div>
+</footer>

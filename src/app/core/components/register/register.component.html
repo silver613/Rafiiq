@@ -1,0 +1,242 @@
+<main class="margin_60_35">
+  <div class="bg_color_2">
+    <div class="container margin_60_35">
+      <div id="register">
+        <h1>{{ "Rgister" | translate }}</h1>
+        <div class="row justify-content-center">
+          <div class="col-md-5">
+            <form [formGroup]="register" (ngSubmit)="onSubmit(register)">
+              <div class="box_form">
+                <div class="form-group">
+                  <label>{{ "Name" | translate }}</label>
+                  <input
+                    name="first_name"
+                    type="text"
+                    class="form-control"
+                    formControlName="first_name"
+                    (keyup)="checkfirst_name($event)"
+                    [ngClass]="{
+                      'is-invalid': typeingfirst_name && f.first_name.errors
+                    }"
+                  />
+                  <div
+                    *ngIf="
+                      register.controls.first_name.invalid &&
+                      register.controls.first_name.touched &&
+                      register.controls.first_name.dirty
+                    "
+                    style="color: red; margin: 0px 17px"
+                  >
+                    <span
+                      *ngIf="register.controls.first_name.errors.required"
+                      >{{ "required" | translate }}</span
+                    >
+                    <span *ngIf="register.controls.first_name.errors.pattern">{{
+                      "letters only" | translate
+                    }}</span>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label>{{ "Last name" | translate }}</label>
+                  <input
+                    name="last_name"
+                    type="text"
+                    class="form-control"
+                    formControlName="last_name"
+                    (keyup)="checklast_name($event)"
+                    [ngClass]="{
+                      'is-invalid': typeinglast_name && f.last_name.errors
+                    }"
+                  />
+                  <div
+                    *ngIf="
+                      register.controls.last_name.invalid &&
+                      register.controls.last_name.touched &&
+                      register.controls.last_name.dirty
+                    "
+                    style="color: red; margin: 0px 17px"
+                  >
+                    <span *ngIf="register.controls.last_name.errors.required">{{
+                      "required" | translate
+                    }}</span>
+                    <span *ngIf="register.controls.last_name.errors.pattern">{{
+                      "letters only" | translate
+                    }}</span>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label>{{ "Username" | translate }} </label>
+                  <input
+                    name="user_name"
+                    type="text"
+                    class="form-control"
+                    formControlName="user_name"
+                  />
+                  <div
+                    *ngIf="
+                      register.controls.user_name.invalid &&
+                      register.controls.user_name.touched &&
+                      register.controls.user_name.dirty
+                    "
+                    style="color: red; margin: 0px 17px"
+                  >
+                    <span *ngIf="register.controls.user_name.errors.required">{{
+                      "required" | translate
+                    }}</span>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label>{{ "Email" | translate }}</label>
+                  <input
+                    name="email"
+                    type="email"
+                    class="form-control"
+                    formControlName="email"
+                    (keyup)="checkemail($event)"
+                    [ngClass]="{ 'is-invalid': typeingemail && f.email.errors }"
+                  />
+                  <div
+                    *ngIf="
+                      register.controls.email.invalid &&
+                      register.controls.email.touched &&
+                      register.controls.email.dirty
+                    "
+                    style="color: red; margin: 0px 17px"
+                  >
+                    <span *ngIf="register.controls.email.errors.required">{{
+                      "required" | translate
+                    }}</span>
+                    <span *ngIf="register.controls.email.errors.pattern">{{
+                      "please enter valid email" | translate
+                    }}</span>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label>{{ "State" | translate }}</label>
+                  <select
+                    name="state_id"
+                    class="form-control"
+                    formControlName="state_id"
+                  >
+                    <option value="{{ s.id }}" *ngFor="let s of roles">
+                      {{ s.name }}
+                    </option>
+                  </select>
+                  <div
+                    *ngIf="
+                      register.controls.state_id.invalid &&
+                      register.controls.state_id.touched &&
+                      register.controls.state_id.dirty
+                    "
+                    style="color: red; margin: 0px 17px"
+                  >
+                    <span *ngIf="register.controls.state_id.errors.required">{{
+                      "required" | translate
+                    }}</span>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label>{{ "Password" | translate }}</label>
+                  <input
+                    [type]="fieldTextType1 ? 'text' : 'password'"
+                    class="form-control"
+                    name="passwords"
+                    formControlName="passwords"
+                    (keyup)="checkpassword($event)"
+                    [ngClass]="{
+                      'is-invalid': typeingpasswords && f.passwords.errors
+                    }"
+                  />
+                  <div class="input-group-append">
+                    <span class="input-group-text">
+                      <i
+                        class="fa"
+                        [ngClass]="{
+                          'fa-eye-slash': !fieldTextType1,
+                          'fa-eye': fieldTextType1
+                        }"
+                        (click)="toggleFieldTextType1()"
+                      ></i>
+                    </span>
+                  </div>
+                  <div
+                    *ngIf="
+                      register.controls.passwords.invalid &&
+                      register.controls.passwords.touched &&
+                      register.controls.passwords.dirty
+                    "
+                    style="color: red; margin: 0px 17px"
+                  >
+                    <span *ngIf="register.controls.passwords.errors.required">{{
+                      "required" | translate
+                    }}</span>
+                    <span *ngIf="register.controls.passwords.errors.pattern">{{
+                      "you must enter 10 digit & at least one capital character"
+                        | translate
+                    }}</span>
+                  </div>
+                </div>
+                <!------[ngClass]="{ 'is-invalid': typeingconpassword && f.conpassword.errors }"-->
+                <div class="form-group">
+                  <label>{{ "Confirm password" | translate }}</label>
+                  <input
+                    [type]="fieldTextType2 ? 'text' : 'password'"
+                    class="form-control"
+                    name="conpassword"
+                    formControlName="conpassword"
+                  />
+                  <div class="input-group-append">
+                    <span class="input-group-text">
+                      <i
+                        class="fa"
+                        [ngClass]="{
+                          'fa-eye-slash': !fieldTextType2,
+                          'fa-eye': fieldTextType2
+                        }"
+                        (click)="toggleFieldTextType2()"
+                      ></i>
+                    </span>
+                  </div>
+                  <div
+                    *ngIf="
+                      register.controls.conpassword.invalid &&
+                      register.controls.conpassword.touched &&
+                      register.controls.conpassword.dirty
+                    "
+                    style="color: red; margin: 0px 17px"
+                  >
+                    <span
+                      *ngIf="register.controls.conpassword.errors.required"
+                      >{{ "required" | translate }}</span
+                    >
+                  </div>
+                </div>
+                <div id="pass-info" class="clearfix"></div>
+
+                <div class="form-group text-center add_top_30">
+                  <input
+                    class="btn_1"
+                    type="submit"
+                    value="{{ 'Submit' | translate }}"
+                  />
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- !Preloader -->
+<div id="page-preloader" *ngIf="showSpinner">
+  <div id="spinner-three">
+    <div id="inner"></div>
+    <div id="outer"></div>
+  </div>
+</div>
+<!-- /// !Preloader -->

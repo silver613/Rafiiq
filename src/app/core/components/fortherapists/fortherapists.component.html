@@ -1,0 +1,130 @@
+<main class="margin_60_35">
+  <div class="hero_home version_1">
+    <div class="content">
+      <p class="joindoc">
+        {{
+          "Enjoy practicing learning online; now you can communicate with thousands of trainers from all over the world privately.Join us with other trainers worldwide."
+            | translate
+        }}
+      </p>
+
+      <form>
+        <button [routerLink]="'/RegisterDoctor'" class="btn_search btn">
+          {{ "JOIN NOW AS A TRAINER" | translate }}
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <section id="requirements">
+    <div class="container margin_120_95">
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+          <h2 class="text-center section-title">
+            {{ "How to join RafiQ Trainers team ?" | translate }}
+          </h2>
+        </div>
+      </div>
+      <div class="row requirements-content">
+        <div
+          class="col-lg-5 col-md-5 col-sm-12 col-xs-12"
+          style="z-index: 10000"
+        >
+          <h3>{{ "Requirements" | translate }}</h3>
+          <ul class="req-list">
+            <li>
+              <div>
+                <i class="icon-right-hand-1"></i>
+                {{ "Click on JOIN NOW AS A TRAINER" | translate }}
+              </div>
+            </li>
+            <li></li>
+            <li>
+              <div>
+                <i class="icon-target-4"> </i>
+                {{ "Complete your profile info professionally." | translate }}
+              </div>
+            </li>
+            <li>
+              <div>
+                <i class="icon-clock-8"> </i>
+                {{ "Add time slots to run sessions." | translate }}
+              </div>
+            </li>
+          </ul>
+          <a [routerLink]="'/RegisterDoctor'" class="btn_join btn">{{
+            "JOIN NOW AS A TRAINER" | translate
+          }}</a>
+        </div>
+        <div class="col-lg-7 col-md-7 col-sm-12">
+          <div class="requirements_bk">
+            <img src="./assets/img/requirment_bk.png" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="bg_color_1">
+    <div class="margin_120_95 container">
+      <div class="row">
+        <div class="col-md-12 sponsors-wrapper">
+          <ul>
+            <li class="list-press" *ngFor="let s of news">
+              <a href="{{ s.link }}" target="_blank">
+                <img
+                  class="img-responsive"
+                  width="100"
+                  height="100"
+                  src="{{ imageURL }}/uploads/news/{{ s.image }}"
+                  alt=""
+                />
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col-lg-12 col-md-12 col-sm-12">
+          <p class="link-to-more text-center">
+            <a [routerLink]="'/AllNEWS'"
+              >{{ "More from the press" | translate
+              }}<i *ngIf="language == 'en'" class="icon-right-dir-1"></i>
+              <i *ngIf="language == 'ar'" class="icon-left-dir-1"></i
+            ></a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="margin_120_95">
+    <div class="main_title">
+      <h2>{{ "What our customers are saying about us" | translate }}</h2>
+    </div>
+
+    <carousel>
+      <slide *ngFor="let s of opinions">
+        <div class="text-center py-5 text-black">
+          <div class="lead1">
+            <img
+              *ngIf="s.image != null"
+              src="{{ imageURL }}/uploads/users/{{ s.image }}"
+            />
+            <img *ngIf="s.image == null" src="{{ imageURL }}" />
+            <p>{{ s.content }}</p>
+          </div>
+        </div>
+      </slide>
+    </carousel>
+  </div>
+</main>
+<!-- /main content -->
+
+<!-- !Preloader -->
+<div id="page-preloader" *ngIf="showSpinner">
+  <div id="spinner-three">
+    <div id="inner"></div>
+    <div id="outer"></div>
+  </div>
+</div>
+<!-- /// !Preloader -->

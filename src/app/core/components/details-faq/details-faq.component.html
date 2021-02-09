@@ -1,0 +1,46 @@
+<main style="transform: none" class="margin_60_35">
+  <div id="breadcrumb">
+    <div class="container">
+      <ul>
+        <li>
+          <a>{{ "Articales" | translate }}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- /breadcrumb -->
+  <div class="container margin_60" style="transform: none">
+    <div class="content educate_content">
+      <div class="section" *ngFor="let s of typequestions">
+        <div class="">
+          <div class="paper">
+            <div class="collection">
+              <div class="collection__photo">
+                <i class="icon-pencil" style="font-size: 40px"></i>
+              </div>
+              <div class="faqgroup">
+                <h3 class="c__primary">{{ s.question }}</h3>
+                <div class="Written">
+                  <span class="c__darker">
+                    {{ s.answer }}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- /row -->
+  </div>
+  <!-- /container -->
+</main>
+<!-- /main -->
+
+<div id="page-preloader" *ngIf="showSpinner">
+  <div id="spinner-three">
+    <div id="inner"></div>
+    <div id="outer"></div>
+  </div>
+</div>

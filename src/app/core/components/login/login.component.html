@@ -1,0 +1,77 @@
+<main class="margin_60_35">
+  <div class="bg_color_2">
+    <div class="container margin_60_35">
+      <div id="login-2">
+        <h1>{{ "login" | translate }}</h1>
+        <form #form="ngForm" (ngSubmit)="submitForm(email, passwords)">
+          <div class="box_form clearfix">
+            <div class="box_login last">
+              <div class="form-group">
+                <input
+                  #email
+                  name="email"
+                  type="email"
+                  class="form-control"
+                  placeholder="{{
+                    'Your email address OR Username' | translate
+                  }}"
+                  style="width: 100%"
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  [type]="fieldTextType ? 'text' : 'password'"
+                  class="form-control passlogin"
+                  placeholder="{{ 'Your password' | translate }}"
+                  #passwords
+                  name="passwords"
+                  style="width: 100%"
+                />
+                <div class="input-group-append">
+                  <span class="input-group-text">
+                    <i
+                      class="fa"
+                      [ngClass]="{
+                        'fa-eye-slash': !fieldTextType,
+                        'fa-eye': fieldTextType
+                      }"
+                      (click)="toggleFieldTextType()"
+                    ></i>
+                  </span>
+                </div>
+              </div>
+              <div class="form-group">
+                <input
+                  class="btn_1"
+                  type="submit"
+                  value="{{ 'Login' | translate }}"
+                />
+              </div>
+              <div class="forget">
+                <a [routerLink]="'/forgetpassword'"
+                  ><b> {{ "Forgotten password?" | translate }}</b></a
+                >
+              </div>
+            </div>
+          </div>
+        </form>
+        <p class="text-center link_bright">
+          {{ "Do not have an account yet?" | translate
+          }}<a [routerLink]="'/Register'"
+            ><strong>{{ "Register now!" | translate }}</strong></a
+          >
+        </p>
+      </div>
+      <!-- /login -->
+    </div>
+  </div>
+</main>
+<!-- /main -->
+
+<!-- !Preloader -->
+<div id="page-preloader" *ngIf="showSpinner">
+  <div id="spinner-three">
+    <div id="inner"></div>
+    <div id="outer"></div>
+  </div>
+</div>
